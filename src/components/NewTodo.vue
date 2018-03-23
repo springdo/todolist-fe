@@ -8,6 +8,8 @@
     </md-field>
   </template>
 <script>
+import EventBus from "@/services/EventBus"
+
 export default {
   name: "NewTodo",
   props: {
@@ -22,7 +24,11 @@ export default {
       newTodoAdded (e) {
           this.newTodo = e.target.value
           console.info('INFO - ', this.newTodo)
-          this.$emit('NEW_TODO_ADDED', { message: this.newTodo })
+          EventBus.$emit('NEWTODOADDED', {
+              completed: false, 
+              msg: this.newTodo,
+              id: Math.floor(1 + (9999 - 1) * Math.random())
+              })
           this.newTodo = ''
       }
   }
