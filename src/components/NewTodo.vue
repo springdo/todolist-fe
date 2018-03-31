@@ -26,7 +26,7 @@ export default {
           console.info('INFO - ', this.newTodo)
           EventBus.$emit('NEWTODOADDED', {
               completed: false, 
-              msg: this.newTodo,
+              title: this.newTodo,
               id: Math.floor(1 + (9999 - 1) * Math.random())
               })
           this.newTodo = ''

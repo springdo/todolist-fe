@@ -4,7 +4,7 @@
       @click="markDone"
     >
       <md-checkbox :value="isActive" />
-      <span class="md-list-item-text" :class="{'strike-through': isActive}">{{ todoItem.msg }}</span>
+      <span class="md-list-item-text" :class="{'strike-through': isActive}">{{ todoItem.title }}</span>
     </md-list-item>
   </div>
 </template>

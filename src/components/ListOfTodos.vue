@@ -24,15 +24,15 @@ export default {
   data () {
     return {
       todos: [{
-        msg: 'Have a poop',
+        title: 'Have a poop',
         id: '123',
         complete: false
       },{
-        msg: 'Learn Vue JS',
+        title: 'Learn Vue JS',
         id: '132',
         complete: false
       },{
-        msg: 'Love DevOps',
+        title: 'Love DevOps',
         id: '321',
         complete: false
       }]
