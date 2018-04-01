@@ -1,15 +1,22 @@
 <template>
   <div>
     <md-card>
+
       <md-card-header class="remove-padding">
         <Header/>
       </md-card-header>
+
       <md-card-content>
         TODOS WILL GO HERE.
         Probs...
           <NewTodo placeholderMsg="Add a new todos here"/>
           <ListOfTodos todos="this.todos"/>
       </md-card-content>
+
+      <div class="image-footer"> 
+        <img class="image-footer-logo" src="../assets/oil-protobadge.png" alt="Open Innovation Labs logo" />
+      </div>
+
     </md-card>
   </div>
 </template>
@@ -48,5 +55,13 @@ export default {
     margin: 4px;
     display: inline-block;
     vertical-align: top;
+  }
+  .image-footer {
+    border-top: solid;
+    margin-top: 1px;
+  }
+  .image-footer-logo {
+    padding: 5px 0px 5px 0px;
+    height: 55px;
   }
 </style>
