@@ -39,10 +39,11 @@ export default {
     },
   },
   methods: {
-    newTodoAdded(e) {
-      console.info("INFO - ", e);
-      
-    }
+    newTodoAdded (e) {
+      this.$store.dispatch('setNewTodo','some random strings or whatever')
+      this.$store.dispatch('addTodo')
+      this.$store.dispatch('clearNewTodo')
+    },
   }
 };
 </script>

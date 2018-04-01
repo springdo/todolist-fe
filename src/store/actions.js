@@ -24,6 +24,9 @@ export default {
       commit("ADD_TODO", mongoTodo);
     });
   },
+  setNewTodo ({ commit }, todo) {
+    commit('SET_NEW_TODO', todo)
+  },
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
   }
