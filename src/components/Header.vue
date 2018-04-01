@@ -5,11 +5,8 @@
         <time class="clearfix">
             <span class="day">{{ date }}</span>
             <span class="dayofweek">{{ weekDay }}</span>
-            <span class="month">{{ month }}, {{ year }}</span>
+            <span class="dayofweek">{{ month }}, {{ year }}</span>
         </time>
-        <div class="add-circle" @click="add">
-            <i class="fa fa-plus"></i>
-        </div>
     </div>
 </template>
 
@@ -66,12 +63,10 @@ export default {
 <style scoped lang="scss">
 // https://github.com/tatthien/vue-todo/blob/master/src/sass/style.scss
 @import "../scss/custom.scss";
-// .clearfix {
-//   overflow: auto;
-//   zoom: 1;
-// }
+
 .todo-header {
-  border-radius: 6px 6px 0 0;
+  border-radius: 0px;
+  // border-radius: 6px 6px 0 0;
   background: url($header_image) no-repeat;
   background-size: cover;
   padding: 55px 20px;
@@ -83,9 +78,7 @@ export default {
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.2); /* fallback for old browsers */
-    //background: -webkit-linear-gradient(to left, rgba(85,98,112,0.5) , rgba(255,107,107,0.5)); /* Chrome 10-25, Safari 5.1-6 */
-    //background: linear-gradient(to left, rgba(85,98,112,0.5) , rgba(255,107,107,0.5)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 6px 6px 0 0;
+    // border-radius: 6px 6px 0 0;
   }
   time {
     color: white;

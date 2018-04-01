@@ -4,7 +4,12 @@
     <NewTodo placeholderMsg="Add a new todo" @NEWTODOADDED="newTodoAdded"/>
     <TodoItem todoItem="Have a beers"/>
     <ListOfTodos todos="this.todos"/>
+
+    <button @click=newTodoAdded>add todo</button>
+    <button>getTodos</button>  
+    <code>{{ allTodos }}</code>
   </div>
+
 </template>
 
 <script>
@@ -16,7 +21,6 @@ import ListOfTodos from "@/components/ListOfTodos.vue";
 
 import EventBus from "@/services/EventBus";
 
-
 export default {
   name: "Catalog",
   components: {
@@ -24,9 +28,20 @@ export default {
     TodoItem,
     ListOfTodos
   },
+    // load todos on start
+  created () {
+    this.$store.dispatch('loadTodos')
+  },
+    // be able to get the data
+  computed: {
+    allTodos () {
+      return this.$store.getters.todos
+    },
+  },
   methods: {
-    newTodoAdded (e) {
-      console.info('INFO - ', e)
+    newTodoAdded(e) {
+      console.info("INFO - ", e);
+      
     }
   }
 };

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "@/store";
 import "./registerServiceWorker";
 
 // TODO - remove these in favour of importing SPECIFIC components as and when needed

@@ -4,8 +4,11 @@
       <md-card-header class="remove-padding">
         <Header/>
       </md-card-header>
-
       <md-card-content>
+        TODOS WILL GO HERE.
+        Probs...
+          <NewTodo placeholderMsg="Add a new todos here"/>
+          <ListOfTodos todos="this.todos"/>
       </md-card-content>
     </md-card>
   </div>
@@ -13,13 +16,25 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import Header from "@/components/Header.vue";
+import NewTodo from "@/components/NewTodo.vue";
+import ListOfTodos from "@/components/ListOfTodos.vue";
+import EventBus from "@/services/EventBus";
+import { mapMutations } from 'vuex'
 
 export default {
   name: "Todo",
   components: {
     Header,
+    ListOfTodos,
+    NewTodo
+  },
+  methods: {
+    ...mapMutations([
+      'editTodo',
+      'toggleTodo',
+      'deleteTodo'
+    ]),
   }
 };
 </script>
