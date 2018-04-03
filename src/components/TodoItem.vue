@@ -3,7 +3,9 @@
     <md-list-item 
       @click="markDone"
     >
-      <md-checkbox :value="isActive" />
+      <!-- Material design checkbox not working as not importing @angular/material anywhere -->
+      <!-- <md-checkbox :v-model="isActive"/> -->
+      <input type="checkbox" v-model="isActive" />
       <span class="md-list-item-text" :class="{'strike-through': isActive}">{{ todoItem.title }}</span>
     </md-list-item>
   </div>
@@ -15,16 +17,16 @@ export default {
     // type any object ;)
     todoItem: {}
   },
-  data () {
+  data() {
     return {
       isActive: false
-    }
+    };
   },
   methods: {
-    markDone () {
+    markDone() {
       // set to greyed out / true false
       this.isActive = !this.isActive;
-      console.info('INFO - ', this.todoItem , this.isActive)
+      console.info("INFO - ", this.todoItem, this.isActive);
     }
   }
 };
@@ -33,13 +35,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .md-list {
-    width: 320px;
-    max-width: 100%;
-    height: 400px;
-    display: inline-block;
-    overflow: auto;
-    border: 1px solid rgba(#000, .12);
-    vertical-align: top;
+  width: 320px;
+  max-width: 100%;
+  height: 400px;
+  display: inline-block;
+  overflow: auto;
+  border: 1px solid rgba(#000, 0.12);
+  vertical-align: top;
 }
 
 .strike-through {
