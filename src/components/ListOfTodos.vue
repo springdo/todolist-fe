@@ -6,44 +6,49 @@
         :todoItem=item
       ></TodoItem>
     </div>
+    <span>x out of {{todos.length}} done</span>
   </md-list>
 </template>
 
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
-import EventBus from "@/services/EventBus"
+import EventBus from "@/services/EventBus";
+import { mapGetters } from 'vuex';
 export default {
   name: "ListOfTodos",
-  props: {
-
-  },
+  props: {},
   components: {
     TodoItem
   },
-  data () {
-    return {
-      todos: [{
-        title: 'Have a poop',
-        id: '123',
-        complete: false
-      },{
-        title: 'Learn Vue JS',
-        id: '132',
-        complete: false
-      },{
-        title: 'Love DevOps',
-        id: '321',
-        complete: false
-      }]
-    }
+  computed: {
+    ...mapGetters(
+      ["todos"]
+    )
   },
-  created () {
-    const self = this
-    EventBus.$on('NEWTODOADDED', function (todo) {
-      console.info('INFO - NEWTODOADDED received ', todo)
-      self.todos.push(todo);
-    });
+  // data () {
+  // return {
+  //   todos: [{
+  //     title: 'Have a poop',
+  //     id: '123',
+  //     complete: true
+  //   },{
+  //     title: 'Learn Vue JS',
+  //     id: '132',
+  //     complete: true
+  //   },{
+  //     title: 'Love DevOps',
+  //     id: '321',
+  //     complete: false
+  //   }]
+  // }
+  // },
+  created() {
+    const self = this;
+    // EventBus.$on("NEWTODOADDED", function(todo) {
+    //   console.info("INFO - NEWTODOADDED received ", todo);
+    //   self.todos.push(todo);
+    // });
   },
   methods: {
     updateTodoList(todo) {

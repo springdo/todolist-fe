@@ -1,16 +1,20 @@
 <template>
   <div>
-    <md-list-item>  
-      <!-- Material design checkbox not working as not importing @angular/material anywhere -->
-      <!-- <md-checkbox :v-model="isActive"/> -->
-      <input type="checkbox" v-model="isActive" @click="markDone"/>
+    <md-list-item
+      @click="markDone"
+      >
+      <!-- TODO find a nice way of not calling markdone when clicking flag on card rather than calling "markDone" twice -->
+      
+      <!-- Material design checkbox not displaying, EDIT: Still can't figure out why it's not displaying -->
+      <!-- <md-checkbox :v-model="isActive">x</md-checkbox> -->
+      <input type="checkbox" v-model="todoItem.complete"/>
 
-      <span class="md-list-item-text" :class="{'strike-through': isActive}" @click="markDone">{{ todoItem.title }}</span>
+      <span class="md-list-item-text" :class="{'strike-through': todoItem.complete}">{{ todoItem.title }}</span>
       <!-- find a nice way to utilise svg fill property without doing it inline -->
       <md-button 
         @click="markImportant"
         >
-        <svg :class="{'red-flag': isImportant}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <svg :class="{'red-flag': isImportant}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markDone">
           <path d="M0 0h24v24H0z" fill="none"/>
           <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
         </svg>
@@ -27,7 +31,7 @@ export default {
   },
   data() {
     return {
-      isActive: false,
+      // isActive: false,
       isImportant: false
     };
   },
@@ -56,10 +60,6 @@ export default {
   overflow: auto;
   border: 1px solid rgba(#000, 0.12);
   vertical-align: top;
-}
-
-.md-list-item {
-  cursor: pointer;
 }
 
 .strike-through {

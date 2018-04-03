@@ -21,7 +21,8 @@ export default {
       completed: false
     };
     axios.post(config.todoEndpoint, todo).then(mongoTodo => {
-      commit("ADD_TODO", mongoTodo);
+      // debugger
+      commit("ADD_TODO", mongoTodo.data);
     });
   },
   setNewTodo ({ commit }, todo) {

@@ -8,8 +8,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: true,
-    todos: [],
-    newTodo: ''
+    todos: [
+      {
+        title: "Have a poop",
+        id: "123",
+        complete: true
+      }
+    ],
+    newTodo: ""
   },
   getters: {
     newTodo: state => state.newTodo,

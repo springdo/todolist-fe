@@ -42,26 +42,34 @@ export default {
       'toggleTodo',
       'deleteTodo'
     ]),
-  }
+  },
+  // data () {
+  //   return { todos: []}
+  // },
+  // computed: {
+  //   todos () {
+  //     return this.$store.getters.todos
+  //   }
+  // }
 };
 </script>
 
 <style lang="scss" scoped>
-  .remove-padding {
-    padding: 0px
-  }
-  .md-card {
-    width: 480px;
-    margin: 4px;
-    display: inline-block;
-    vertical-align: top;
-  }
-  .image-footer {
-    border-top: solid;
-    margin-top: 1px;
-  }
-  .image-footer-logo {
-    padding: 5px 0px 5px 0px;
-    height: 55px;
-  }
+.remove-padding {
+  padding: 0px;
+}
+.md-card {
+  width: 480px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+.image-footer {
+  border-top: solid;
+  margin-top: 1px;
+}
+.image-footer-logo {
+  padding: 5px 0px 5px 0px;
+  height: 55px;
+}
 </style>
