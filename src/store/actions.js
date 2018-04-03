@@ -18,7 +18,8 @@ export default {
     }
     const todo = {
       title: state.newTodo,
-      completed: false
+      completed: false,
+      important: false
     };
     axios.post(config.todoEndpoint, todo).then(mongoTodo => {
       // debugger

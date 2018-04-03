@@ -12,7 +12,8 @@ export default new Vuex.Store({
       {
         title: "Have a poop",
         id: "123",
-        complete: true
+        complete: true,
+        important: false
       }
     ],
     newTodo: ""

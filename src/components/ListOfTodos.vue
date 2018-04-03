@@ -6,8 +6,8 @@
         :todoItem=item
       ></TodoItem>
     </div>
-    Should be here <XofYitems/>Should be here
-    <!-- <span>x out of {{todos.length}} done</span> -->
+    <XofYitems />
+    <span> {{sumDoneTodoItems(todos)}}out of {{this.todos.length}} done</span>
   </md-list>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   name: "ListOfTodos",
   props: {},
   components: {
-    TodoItem
+    TodoItem,
+    XofYitems
   },
   computed: {
     ...mapGetters(
@@ -53,8 +54,11 @@ export default {
     // });
   },
   methods: {
-    updateTodoList(todo) {
-      this.todos.push(todo);
+    // updateTodoList(todo) {
+    //   this.todos.push(todo);
+    // },
+    sumDoneTodoItems(todos) {
+      return todos.reduce((result, tdItem) => tdItem.complete ? result + 1 : result, 0);
     }
   }
 };

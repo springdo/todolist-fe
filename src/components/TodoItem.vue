@@ -15,7 +15,7 @@
       <md-button 
         @click="markImportant"
         >
-        <svg :class="{'red-flag': isImportant}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markDone">
+        <svg :class="{'red-flag': todoItem.important}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markDone">
           <path d="M0 0h24v24H0z" fill="none"/>
           <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
         </svg>
@@ -38,20 +38,20 @@ export default {
   },
   data() {
     return {
-      isActive: false,
-      isImportant: false
+      // isActive: false,
+      // isImportant: false
     };
   },
   methods: {
     markDone() {
-      // set to greyed out / true false
-      this.isActive = !this.isActive;
-      console.info("INFO - ", this.todoItem, this.isActive);
+      // Delete me below even if it works
+      this.todoItem.complete = !this.todoItem.complete;
+      console.info("INFO - ", this.todoItem, this.todoItem.complete);
     },
     markImportant() {
       // set to greyed out / true false
-      this.isImportant = !this.isImportant;
-      console.info("INFO - ", this.todoItem, this.isImportant);
+      this.todoItem.important = !this.todoItem.important;
+      console.info("INFO - ", this.todoItem, this.todoItem.important);
     }
   }
 };
