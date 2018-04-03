@@ -7,7 +7,10 @@
       ></TodoItem>
     </div>
     <XofYitems />
-    <span> {{sumDoneTodoItems(todos)}}out of {{this.todos.length}} done</span>
+    <div class="xofyDone">
+      <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done</span>
+      <button v-on:click="clearTodos()">CLEAR DONE</button>
+    </div>
   </md-list>
 </template>
 
@@ -59,7 +62,11 @@ export default {
     // },
     sumDoneTodoItems(todos) {
       return todos.reduce((result, tdItem) => tdItem.complete ? result + 1 : result, 0);
+    },
+    clearTodos() {
+      this.$store.dispatch('clearAllTodos');
     }
+
   }
 };
 </script>
@@ -67,4 +74,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
+.xofyDone{
+      display: inline-block;
+
+}
 </style>

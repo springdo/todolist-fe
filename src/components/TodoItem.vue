@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="itemCardAndFlag">
+
     <md-list-item
       @click="markDone"
       >
@@ -21,6 +23,7 @@
         </svg>
       </md-button>
     </md-list-item>
+    </div>
   </div>
 </template>
 <script>
@@ -44,8 +47,13 @@ export default {
   },
   methods: {
     markDone() {
-      // Delete me below even if it works
+      // Delete me below even if it works DEMO PURPOSE ONLY
       this.todoItem.complete = !this.todoItem.complete;
+
+      // Do we need to add a new action/mutation to change todo.x? 
+      // this.$store.dispatch("setNewTodo", this.newTodo)
+      
+      
       console.info("INFO - ", this.todoItem, this.todoItem.complete);
     },
     markImportant() {

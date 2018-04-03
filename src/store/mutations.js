@@ -19,5 +19,9 @@ export default {
   CLEAR_NEW_TODO(state) {
     state.newTodo = '';
     console.log('INFO - clearing new todo');
+  },
+  CLEAR_ALL_TODOS(state) {
+    state.todos = [{ title: "", id: "0", complete: false, important: false }];
+    console.log('INFO - clearing all todos');
   }
 };

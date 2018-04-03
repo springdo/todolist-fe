@@ -31,5 +31,8 @@ export default {
   },
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
+  },
+  clearAllTodos({ commit }) {
+    commit("CLEAR_ALL_TODOS")
   }
 };
