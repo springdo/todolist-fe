@@ -1,16 +1,11 @@
 <template>
   <div>
-    <md-list-item       
-      @click="markDone"
-      >  
-        <!-- Material design checkbox not working as not importing @angular/material anywhere -->
-        <!-- <md-checkbox :v-model="isActive"/> -->
-        <input type="checkbox" v-model="isActive" />
+    <md-list-item>  
+      <!-- Material design checkbox not working as not importing @angular/material anywhere -->
+      <!-- <md-checkbox :v-model="isActive"/> -->
+      <input type="checkbox" v-model="isActive" @click="markDone"/>
 
-        <span class="md-list-item-text" :class="{'strike-through': isActive}">{{ todoItem.title }}</span>
-        <md-button>
-          <img src="@/assets/insert-photo.svg">
-        </md-button>
+      <span class="md-list-item-text" :class="{'strike-through': isActive}" @click="markDone">{{ todoItem.title }}</span>
       <!-- find a nice way to utilise svg fill property without doing it inline -->
       <md-button 
         @click="markImportant"
@@ -61,6 +56,10 @@ export default {
   overflow: auto;
   border: 1px solid rgba(#000, 0.12);
   vertical-align: top;
+}
+
+.md-list-item {
+  cursor: pointer;
 }
 
 .strike-through {
