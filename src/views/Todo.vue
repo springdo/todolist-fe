@@ -8,7 +8,6 @@
 
       <md-card-content>
         TODOS WILL GO HERE.
-        Probs...
           <NewTodo placeholderMsg="Add a new todos here"/>
           <ListOfTodos todos="this.todos"/>
       </md-card-content>

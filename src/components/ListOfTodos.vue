@@ -6,13 +6,15 @@
         :todoItem=item
       ></TodoItem>
     </div>
-    <span>x out of {{todos.length}} done</span>
+    Should be here <XofYitems/>Should be here
+    <!-- <span>x out of {{todos.length}} done</span> -->
   </md-list>
 </template>
 
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
+import XofYitems from "@/components/XofYitems.vue";
 import EventBus from "@/services/EventBus";
 import { mapGetters } from 'vuex';
 export default {

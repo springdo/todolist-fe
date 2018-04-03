@@ -7,7 +7,8 @@
       
       <!-- Material design checkbox not displaying, EDIT: Still can't figure out why it's not displaying -->
       <!-- <md-checkbox :v-model="isActive">x</md-checkbox> -->
-      <input type="checkbox" v-model="todoItem.complete"/>
+      <!-- <input type="checkbox" v-model="todoItem.complete"/> -->
+      <checkbox v-model="todoItem.complete"/> 
 
       <span class="md-list-item-text" :class="{'strike-through': todoItem.complete}">{{ todoItem.title }}</span>
       <!-- find a nice way to utilise svg fill property without doing it inline -->
@@ -23,6 +24,12 @@
   </div>
 </template>
 <script>
+
+import Vue from "vue";
+import {Checkbox, Radio} from 'vue-checkbox-radio';
+Vue.component('checkbox', Checkbox);
+Vue.component('radio', Radio);
+
 export default {
   name: "TodoItem",
   props: {
@@ -31,7 +38,7 @@ export default {
   },
   data() {
     return {
-      // isActive: false,
+      isActive: false,
       isImportant: false
     };
   },
@@ -60,6 +67,10 @@ export default {
   overflow: auto;
   border: 1px solid rgba(#000, 0.12);
   vertical-align: top;
+}
+
+.md-list-item-text {
+  padding-left: 0.5em;
 }
 
 .strike-through {
