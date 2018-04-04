@@ -54,10 +54,11 @@ export default {
       );
     },
     clearDoneTodos() {
-      this.$store.dispatch("clearAllDoneTodos");
+      this.$store.dispatch("clearTodos");
     },
     clearTodos() {
-      this.$store.dispatch("clearAllTodos");
+      // NOTE - true = all todos
+      this.$store.dispatch("clearTodos", true);
     }
   }
 };

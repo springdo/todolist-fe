@@ -64,20 +64,28 @@ export default {
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
   },
-  clearAllTodos({ commit }) {
-    commit("CLEAR_ALL_TODOS");
-  },
-  clearAllDoneTodos({ commit, state }) {
+  clearTodos({ commit, state }, all) {
     // 1 fire and forget or
-    state.todos.map(todo => {
-      // axios remove all done by the id
-      if (todo.completed){
-        axios.delete(config.todoEndpoint + '/' + todo._id).then(data => {
-          console.info("INFO - item " + todo._id + " deleted", data);
-        });
-      }
-    });
+    const deleteStuff = (id) => {
+      axios.delete(config.todoEndpoint + '/' + id).then(data => {
+        console.info("INFO - item " + id + " deleted", data);
+      });
+    };
+
+    if (all) {
+      state.todos.map(todo => { 
+        deleteStuff(todo._id)
+      });
+      commit("CLEAR_ALL_TODOS");
+    } else {
+      state.todos.map(todo => {
+        // axios remove all done by the id
+        if (todo.completed) {
+          deleteStuff(todo._id)
+        }
+      });
+      commit("CLEAR_ALL_DONE_TODOS");
+    }
     //  2 return array of promises and resolve all
-    commit("CLEAR_ALL_DONE_TODOS");
   }
 };
