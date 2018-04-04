@@ -22,7 +22,6 @@ export default {
       important: false
     };
     axios.post(config.todoEndpoint, todo).then(mongoTodo => {
-      // debugger
       commit("ADD_TODO", mongoTodo.data);
     });
   },
@@ -34,5 +33,11 @@ export default {
   },
   clearAllTodos({ commit }) {
     commit("CLEAR_ALL_TODOS")
+  },
+  clearAllDoneTodos({ commit }) {
+    commit("CLEAR_ALL_DONE_TODOS")
+  },
+  updateTodo({ commit }, todo) {
+    commit("UPDATE_TODO")
   }
 };

@@ -49,7 +49,7 @@ export default {
     markDone() {
       // Delete me below even if it works DEMO PURPOSE ONLY
       this.todoItem.complete = !this.todoItem.complete;
-
+ 		  this.$store.dispatch("updateTodo", this.todoItem);
       // Do we need to add a new action/mutation to change todo.x? 
       // this.$store.dispatch("setNewTodo", this.newTodo)
       
@@ -59,6 +59,7 @@ export default {
     markImportant() {
       // set to greyed out / true false
       this.todoItem.important = !this.todoItem.important;
+ 		  this.$store.dispatch("updateTodo", this.todoItem);
       console.info("INFO - ", this.todoItem, this.todoItem.important);
     }
   }

@@ -1,17 +1,20 @@
 <template>
-  <md-list>
-    <!-- TODO - change to an actual KEY when i connect to the DB -->
-    <div v-for="item in todos" :key="item.id" >
-      <TodoItem
-        :todoItem=item
-      ></TodoItem>
-    </div>
+  <div>
+    <md-list>
+      <!-- TODO - change to an actual KEY when i connect to the DB -->
+      <div v-for="item in todos" :key="item.id" >
+        <TodoItem
+          :todoItem=item
+        ></TodoItem>
+      </div>
+    </md-list>
     <XofYitems />
     <div class="xofyDone">
-      <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done</span>
-      <button v-on:click="clearTodos()">CLEAR DONE</button>
+      <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done. </span>
+      <button v-on:click="clearDoneTodos()">CLEAR DONE</button>
+      <button v-on:click="clearTodos()">CLEAR ALL</button>
     </div>
-  </md-list>
+  </div>
 </template>
 
 
@@ -19,7 +22,8 @@
 import TodoItem from "@/components/TodoItem.vue";
 import XofYitems from "@/components/XofYitems.vue";
 import EventBus from "@/services/EventBus";
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
+
 export default {
   name: "ListOfTodos",
   props: {},
@@ -28,9 +32,7 @@ export default {
     XofYitems
   },
   computed: {
-    ...mapGetters(
-      ["todos"]
-    )
+    ...mapGetters(["todos"])
   },
   // data () {
   // return {
@@ -61,21 +63,24 @@ export default {
     //   this.todos.push(todo);
     // },
     sumDoneTodoItems(todos) {
-      return todos.reduce((result, tdItem) => tdItem.complete ? result + 1 : result, 0);
+      return todos.reduce(
+        (result, tdItem) => (tdItem.complete ? result + 1 : result),
+        0
+      );
+    },
+    clearDoneTodos() {
+      this.$store.dispatch("clearAllDoneTodos");
     },
     clearTodos() {
-      this.$store.dispatch('clearAllTodos');
+      this.$store.dispatch("clearAllTodos");
     }
-
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-.xofyDone{
-      display: inline-block;
-
+.xofyDone {
+  display: inline-block;
 }
 </style>

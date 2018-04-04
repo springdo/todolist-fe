@@ -10,9 +10,27 @@ export default new Vuex.Store({
     loading: true,
     todos: [
       {
-        title: "Have a poop",
+        title: "Have a sandwich",
         id: "123",
         complete: true,
+        important: true
+      },
+      {
+        title: "Learn VueJS",
+        id: "1234",
+        complete: true,
+        important: false
+      },
+      {
+        title: "EnableEnablement",
+        id: "1235",
+        complete: false,
+        important: true
+      },
+      {
+        title: "Have a poop",
+        id: "1236",
+        complete: false,
         important: false
       }
     ],
