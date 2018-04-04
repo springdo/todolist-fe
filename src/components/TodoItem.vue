@@ -47,12 +47,12 @@ export default {
   methods: {
     markCompleted() {
       this.$store.dispatch("markTodoCompleted", this.todoItem._id);
-      console.info("INFO - Mark Item as completed ", this.todoItem.completed);
+      console.info("INFO - Mark todo as completed ", this.todoItem.completed);
     },
     markImportant() {
+      console.info("INFO - Mark todo as important ", this.todoItem.important);
       // TODO - FILL THIS OUT IN THE LAB EXERCISE
-      // this.$store.dispatch("updateTodo", this.todoItem);
-      console.info("INFO - ", this.todoItem, this.todoItem.important);
+
     }
   }
 };

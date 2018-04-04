@@ -35,13 +35,7 @@ export default {
     ...mapGetters(["todos"])
   },
   created() {
-    // const self = this;
     this.$store.dispatch("loadTodos");
-
-    // EventBus.$on("NEWTODOADDED", function(todo) {
-    //   console.info("INFO - NEWTODOADDED received ", todo);
-    //   self.todos.push(todo);
-    // });
   },
   methods: {
     // updateTodoList(todo) {

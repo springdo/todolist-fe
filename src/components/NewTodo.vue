@@ -22,18 +22,12 @@ export default {
   },
   methods: {
       newTodoAdded (e) {
-          this.newTodo = e.target.value
-          console.info('Adding new todo')
-          console.info('INFO - ', this.newTodo)
-        //   EventBus.$emit('NEWTODOADDED', {
-        //       completed: false, 
-        //       title: this.newTodo,
-        //       id: Math.floor(1 + (9999 - 1) * Math.random())
-		//   })
-		  this.$store.dispatch("setNewTodo", this.newTodo)
-		  this.$store.dispatch("addTodo")
-		  this.$store.dispatch("clearNewTodo")
-		  this.newTodo = ''
+        console.info('INFO - Adding new todo ', this.newTodo)
+        this.newTodo = e.target.value
+        this.$store.dispatch("setNewTodo", this.newTodo)
+        this.$store.dispatch("addTodo")
+        this.$store.dispatch("clearNewTodo")
+        this.newTodo = ''
       }
   }
 };
