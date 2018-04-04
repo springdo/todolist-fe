@@ -14,7 +14,6 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import NewTodo from "@/components/NewTodo.vue";
 import TodoItem from "@/components/TodoItem.vue";
 import ListOfTodos from "@/components/ListOfTodos.vue";

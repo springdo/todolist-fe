@@ -7,7 +7,6 @@
       </md-card-header>
 
       <md-card-content>
-        TODOS WILL GO HERE.
           <NewTodo placeholderMsg="Add a new todos here"/>
           <ListOfTodos todos="this.todos"/>
       </md-card-content>

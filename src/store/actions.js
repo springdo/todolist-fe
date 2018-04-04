@@ -26,9 +26,10 @@ export default {
       .then(todos => {
         commit("SET_TODOS", todos);
         commit("SET_LOADING", false);
-      }).catch(err => {
+      })
+      .catch(err => {
         if (err) {
-          console.info("INFO - setting dummy data because of ", err)
+          console.info("INFO - setting dummy data because of ", err);
           commit("SET_TODOS", dummyData);
           commit("SET_LOADING", false);
         }
@@ -53,39 +54,41 @@ export default {
     // debugger
     commit("SET_NEW_TODO", todo);
   },
-  updateTodo({ commit, state }, todo) {
-    // const todo = state.newTodo
-    // debugger;
-    const foundIndex = state.todos.findIndex(obj => obj.id === todo.id);
-    state.todos[foundIndex] = todo;
-    const newUpdatedArray = state.todos;
-    commit("UPDATE_TODO", newUpdatedArray);
-  },
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
   },
   clearTodos({ commit, state }, all) {
     // 1 fire and forget or
-    const deleteStuff = (id) => {
-      axios.delete(config.todoEndpoint + '/' + id).then(data => {
+    const deleteStuff = id => {
+      axios.delete(config.todoEndpoint + "/" + id).then(data => {
         console.info("INFO - item " + id + " deleted", data);
       });
     };
 
     if (all) {
-      state.todos.map(todo => { 
-        deleteStuff(todo._id)
+      state.todos.map(todo => {
+        deleteStuff(todo._id);
       });
       commit("CLEAR_ALL_TODOS");
     } else {
       state.todos.map(todo => {
         // axios remove all done by the id
         if (todo.completed) {
-          deleteStuff(todo._id)
+          deleteStuff(todo._id);
         }
       });
       commit("CLEAR_ALL_DONE_TODOS");
     }
     //  2 return array of promises and resolve all
+  },
+  markTodoCompleted({ commit, state }, id) {
+    let i = state.todos.findIndex(todo => todo._id === id);
+    // todo - add back end
+    axios
+      .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
+      .then(data => {
+        console.info("INFO - item " + id + " updated", data);
+      });
+    commit("MARK_TODO_COMPLETED", i);
   }
 };

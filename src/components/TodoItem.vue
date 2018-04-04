@@ -3,7 +3,7 @@
     <div class="itemCardAndFlag">
 
     <md-list-item
-      @click="markDone"
+      @click="markCompleted"
       >
       <!-- TODO find a nice way of not calling markdone when clicking flag on card rather than calling "markDone" twice -->
       
@@ -17,7 +17,7 @@
       <md-button 
         @click="markImportant"
         >
-        <svg :class="{'red-flag': todoItem.important}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markDone">
+        <svg :class="{'red-flag': todoItem.important}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markCompleted">
           <path d="M0 0h24v24H0z" fill="none"/>
           <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
         </svg>
@@ -45,20 +45,12 @@ export default {
     };
   },
   methods: {
-    markDone() {
-      // Delete me below even if it works DEMO PURPOSE ONLY
-      this.todoItem.completed = !this.todoItem.completed;
-      // debugger;
-      // this.$store.dispatch("setNewTodo", this.todoItem);
-      // this.$store.dispatch("updateTodo", this.todoItem);
-      // this.$store.dispatch("clearNewTodo");
-      // Do we need to add a new action/mutation to change todo.x?
-      // this.$store.dispatch("setNewTodo", this.newTodo)
-
-      console.info("INFO - ", this.todoItem, this.todoItem.completed);
+    markCompleted() {
+      this.$store.dispatch("markTodoCompleted", this.todoItem._id);
+      console.info("INFO - Mark Item as completed ", this.todoItem.completed);
     },
     markImportant() {
-      this.todoItem.important = !this.todoItem.important;
+      // TODO - FILL THIS OUT IN THE LAB EXERCISE
       // this.$store.dispatch("updateTodo", this.todoItem);
       console.info("INFO - ", this.todoItem, this.todoItem.important);
     }
