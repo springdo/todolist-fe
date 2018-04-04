@@ -34,25 +34,10 @@ export default {
   computed: {
     ...mapGetters(["todos"])
   },
-  // data () {
-  // return {
-  //   todos: [{
-  //     title: 'Have a poop',
-  //     id: '123',
-  //     complete: true
-  //   },{
-  //     title: 'Learn Vue JS',
-  //     id: '132',
-  //     complete: true
-  //   },{
-  //     title: 'Love DevOps',
-  //     id: '321',
-  //     complete: false
-  //   }]
-  // }
-  // },
   created() {
-    const self = this;
+    // const self = this;
+    this.$store.dispatch("loadTodos");
+
     // EventBus.$on("NEWTODOADDED", function(todo) {
     //   console.info("INFO - NEWTODOADDED received ", todo);
     //   self.todos.push(todo);
@@ -64,7 +49,7 @@ export default {
     // },
     sumDoneTodoItems(todos) {
       return todos.reduce(
-        (result, tdItem) => (tdItem.complete ? result + 1 : result),
+        (result, tdItem) => (tdItem.completed ? result + 1 : result),
         0
       );
     },

@@ -1,6 +1,23 @@
 import axios from "axios";
 import config from "@/config";
 
+const dummyData = [
+  {
+    title: "Learn awesome things about Labs",
+    completed: false,
+    important: false
+  },
+  {
+    title: "Learn about my friend Jenkins",
+    completed: true,
+    important: false
+  },
+  {
+    title: "Have a poop",
+    completed: false,
+    important: true
+  }
+];
 export default {
   loadTodos({ commit }) {
     axios
@@ -9,6 +26,12 @@ export default {
       .then(todos => {
         commit("SET_TODOS", todos);
         commit("SET_LOADING", false);
+      }).catch(err => {
+        if (err) {
+          console.info("INFO - setting dummy data because of ", err)
+          commit("SET_TODOS", dummyData);
+          commit("SET_LOADING", false);
+        }
       });
   },
   addTodo({ commit, state }) {
@@ -16,36 +39,35 @@ export default {
       // do not add empty todos
       return;
     }
-    debugger
+    // debugger
     const todo = {
       title: state.newTodo,
-      complete: false,
-      important: false,
-      id: Math.floor(1 + (9999 - 1) * Math.random())
+      completed: false,
+      important: false
     };
     axios.post(config.todoEndpoint, todo).then(mongoTodo => {
       commit("ADD_TODO", mongoTodo.data);
     });
   },
-  setNewTodo ({ commit }, todo) {
+  setNewTodo({ commit }, todo) {
     // debugger
-    commit('SET_NEW_TODO', todo)
+    commit("SET_NEW_TODO", todo);
   },
-  updateTodo({ commit,state }, todo) {
+  updateTodo({ commit, state }, todo) {
     // const todo = state.newTodo
-    debugger
+    // debugger;
     const foundIndex = state.todos.findIndex(obj => obj.id === todo.id);
     state.todos[foundIndex] = todo;
-    const newUpdatedArray = state.todos
-    commit("UPDATE_TODO", newUpdatedArray)
+    const newUpdatedArray = state.todos;
+    commit("UPDATE_TODO", newUpdatedArray);
   },
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
   },
   clearAllTodos({ commit }) {
-    commit("CLEAR_ALL_TODOS")
+    commit("CLEAR_ALL_TODOS");
   },
   clearAllDoneTodos({ commit }) {
-    commit("CLEAR_ALL_DONE_TODOS")
-  },
+    commit("CLEAR_ALL_DONE_TODOS");
+  }
 };

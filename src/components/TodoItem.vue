@@ -10,9 +10,9 @@
       <!-- Material design checkbox not displaying, EDIT: Still can't figure out why it's not displaying -->
       <!-- <md-checkbox :v-model="isActive">x</md-checkbox> -->
       <!-- <input type="checkbox" v-model="todoItem.complete"/> -->
-      <checkbox v-model="todoItem.complete"/> 
+      <checkbox v-model="todoItem.completed"/> 
 
-      <span class="md-list-item-text" :class="{'strike-through': todoItem.complete}">{{ todoItem.title }}</span>
+      <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
       <!-- find a nice way to utilise svg fill property without doing it inline -->
       <md-button 
         @click="markImportant"
@@ -47,7 +47,7 @@ export default {
   methods: {
     markDone() {
       // Delete me below even if it works DEMO PURPOSE ONLY
-      this.todoItem.complete = !this.todoItem.complete;
+      this.todoItem.completed = !this.todoItem.completed;
       // debugger;
       // this.$store.dispatch("setNewTodo", this.todoItem);
       // this.$store.dispatch("updateTodo", this.todoItem);
@@ -55,7 +55,7 @@ export default {
       // Do we need to add a new action/mutation to change todo.x?
       // this.$store.dispatch("setNewTodo", this.newTodo)
 
-      console.info("INFO - ", this.todoItem, this.todoItem.complete);
+      console.info("INFO - ", this.todoItem, this.todoItem.completed);
     },
     markImportant() {
       this.todoItem.important = !this.todoItem.important;
