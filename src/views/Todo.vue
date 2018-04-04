@@ -41,14 +41,6 @@ export default {
       'deleteTodo'
     ]),
   },
-  // data () {
-  //   return { todos: []}
-  // },
-  // computed: {
-  //   todos () {
-  //     return this.$store.getters.todos
-  //   }
-  // }
 };
 </script>
 
