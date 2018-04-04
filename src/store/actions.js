@@ -67,7 +67,17 @@ export default {
   clearAllTodos({ commit }) {
     commit("CLEAR_ALL_TODOS");
   },
-  clearAllDoneTodos({ commit }) {
+  clearAllDoneTodos({ commit, state }) {
+    // 1 fire and forget or
+    state.todos.map(todo => {
+      // axios remove all done by the id
+      if (todo.completed){
+        axios.delete(config.todoEndpoint + '/' + todo._id).then(data => {
+          console.info("INFO - item " + todo._id + " deleted", data);
+        });
+      }
+    });
+    //  2 return array of promises and resolve all
     commit("CLEAR_ALL_DONE_TODOS");
   }
 };
