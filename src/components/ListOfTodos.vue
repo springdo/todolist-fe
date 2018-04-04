@@ -8,7 +8,7 @@
         ></TodoItem>
       </div>
     </md-list>
-    <XofYitems />
+    <!-- <XofYitems /> -->
     <div class="xofyDone">
       <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done. </span>
       <button v-on:click="clearDoneTodos()">CLEAR DONE</button>
@@ -20,7 +20,7 @@
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
-import XofYitems from "@/components/XofYitems.vue";
+// import XofYitems from "@/components/XofYitems.vue";
 import EventBus from "@/services/EventBus";
 import { mapGetters } from "vuex";
 
@@ -29,7 +29,7 @@ export default {
   props: {},
   components: {
     TodoItem,
-    XofYitems
+    // XofYitems
   },
   computed: {
     ...mapGetters(["todos"])

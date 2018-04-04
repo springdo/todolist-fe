@@ -23,6 +23,7 @@ export default {
   methods: {
       newTodoAdded (e) {
           this.newTodo = e.target.value
+          console.info('Adding new todo')
           console.info('INFO - ', this.newTodo)
         //   EventBus.$emit('NEWTODOADDED', {
         //       completed: false, 

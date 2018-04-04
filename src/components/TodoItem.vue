@@ -48,9 +48,9 @@ export default {
     markDone() {
       // Delete me below even if it works DEMO PURPOSE ONLY
       this.todoItem.complete = !this.todoItem.complete;
-      debugger;
+      // debugger;
       // this.$store.dispatch("setNewTodo", this.todoItem);
-      this.$store.dispatch("updateTodo", that.todoItem);
+      // this.$store.dispatch("updateTodo", this.todoItem);
       // this.$store.dispatch("clearNewTodo");
       // Do we need to add a new action/mutation to change todo.x?
       // this.$store.dispatch("setNewTodo", this.newTodo)
@@ -59,7 +59,7 @@ export default {
     },
     markImportant() {
       this.todoItem.important = !this.todoItem.important;
-      this.$store.dispatch("updateTodo", this.todoItem);
+      // this.$store.dispatch("updateTodo", this.todoItem);
       console.info("INFO - ", this.todoItem, this.todoItem.important);
     }
   }

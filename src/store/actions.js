@@ -19,14 +19,16 @@ export default {
     debugger
     const todo = {
       title: state.newTodo,
-      completed: false,
-      important: false
+      complete: false,
+      important: false,
+      id: Math.floor(1 + (9999 - 1) * Math.random())
     };
     axios.post(config.todoEndpoint, todo).then(mongoTodo => {
       commit("ADD_TODO", mongoTodo.data);
     });
   },
   setNewTodo ({ commit }, todo) {
+    // debugger
     commit('SET_NEW_TODO', todo)
   },
   updateTodo({ commit,state }, todo) {
