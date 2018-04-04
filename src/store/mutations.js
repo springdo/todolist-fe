@@ -6,6 +6,7 @@ export default {
     state.todos = todos;
   },
   SET_NEW_TODO(state, todo) {
+    // debugger
     state.newTodo = todo;
   },
   ADD_TODO(state, todo) {
@@ -29,8 +30,15 @@ export default {
     ];
     console.log('INFO - clearing all todos');
   },
-  UPDATE_TODO(state, todo) {
-    state.todos.map((todo => todo.id === eachTodo.id) || eachTodo);
+  UPDATE_TODO(state, updatedTodos) {
+    debugger
+    // state.todos.map((obj => ((obj.id !== todo.id )|| todo)));
+    // const foundIndex = state.todos.findIndex(obj => (obj.id === todo.id ));
+    // state.todos[foundIndex] = todo;
+    state.todos = updatedTodos;
+    // don't do this, maybe google instead
+
+
     console.log('INFO - update a todo');
     // state.todos.find(eachTodo => eachTodo.id === todo.id)
     // arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);

@@ -16,6 +16,7 @@ export default {
       // do not add empty todos
       return;
     }
+    debugger
     const todo = {
       title: state.newTodo,
       completed: false,
@@ -28,6 +29,14 @@ export default {
   setNewTodo ({ commit }, todo) {
     commit('SET_NEW_TODO', todo)
   },
+  updateTodo({ commit,state }, todo) {
+    // const todo = state.newTodo
+    debugger
+    const foundIndex = state.todos.findIndex(obj => obj.id === todo.id);
+    state.todos[foundIndex] = todo;
+    const newUpdatedArray = state.todos
+    commit("UPDATE_TODO", newUpdatedArray)
+  },
   clearNewTodo({ commit }) {
     commit("CLEAR_NEW_TODO");
   },
@@ -37,7 +46,4 @@ export default {
   clearAllDoneTodos({ commit }) {
     commit("CLEAR_ALL_DONE_TODOS")
   },
-  updateTodo({ commit }, todo) {
-    commit("UPDATE_TODO")
-  }
 };

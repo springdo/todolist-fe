@@ -27,11 +27,10 @@
   </div>
 </template>
 <script>
-
 import Vue from "vue";
-import {Checkbox, Radio} from 'vue-checkbox-radio';
-Vue.component('checkbox', Checkbox);
-Vue.component('radio', Radio);
+import { Checkbox, Radio } from "vue-checkbox-radio";
+Vue.component("checkbox", Checkbox);
+Vue.component("radio", Radio);
 
 export default {
   name: "TodoItem",
@@ -49,17 +48,18 @@ export default {
     markDone() {
       // Delete me below even if it works DEMO PURPOSE ONLY
       this.todoItem.complete = !this.todoItem.complete;
- 		  this.$store.dispatch("updateTodo", this.todoItem);
-      // Do we need to add a new action/mutation to change todo.x? 
+      debugger;
+      // this.$store.dispatch("setNewTodo", this.todoItem);
+      this.$store.dispatch("updateTodo", that.todoItem);
+      // this.$store.dispatch("clearNewTodo");
+      // Do we need to add a new action/mutation to change todo.x?
       // this.$store.dispatch("setNewTodo", this.newTodo)
-      
-      
+
       console.info("INFO - ", this.todoItem, this.todoItem.complete);
     },
     markImportant() {
-      // set to greyed out / true false
       this.todoItem.important = !this.todoItem.important;
- 		  this.$store.dispatch("updateTodo", this.todoItem);
+      this.$store.dispatch("updateTodo", this.todoItem);
       console.info("INFO - ", this.todoItem, this.todoItem.important);
     }
   }
