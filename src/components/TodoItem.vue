@@ -8,13 +8,13 @@
       <checkbox v-model="todoItem.completed"/> 
 
       <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
-      <md-button 
-        @click="markCompleted(); markImportant()"
+    </md-list-item>
+      <md-button class="flag"
+        @click="markImportant()"
         >
         <!-- find a nice way to utilise svg fill property without doing it inline -->
         <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
       </md-button>
-    </md-list-item>
     </div>
   </div>
 </template>
@@ -53,18 +53,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.md-list {
+.md-list-item {
   width: 320px;
   max-width: 100%;
-  height: 400px;
+  height: 50px;
   display: inline-block;
   overflow: auto;
-  border: 1px solid rgba(#000, 0.12);
-  vertical-align: top;
 }
 
 .md-list-item-text {
   padding-left: 0.5em;
+}
+
+.itemCardandFlag {
+  display: inline-block;
 }
 
 .strike-through {
@@ -72,6 +74,10 @@ export default {
   font-style: italic;
 }
 
+.flag {
+  height: 50px;
+  margin: 0px;
+}
 .red-flag {
   fill: #cc0000;
 }
