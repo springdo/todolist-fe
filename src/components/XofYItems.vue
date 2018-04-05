@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="xofyDone">
-            <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done. </span>
+            <span> {{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done. </span>
             <md-button class="md-raised" v-on:click="clearDoneTodos()">Clear Done</md-button>
             <md-button class="md-raised" v-on:click="clearTodos()">Clear all</md-button>
         </div>
@@ -40,6 +40,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .xofyDone {
+  height: 52px;
+  line-height: 52px;
   display: inline-block;
 }
 </style>
