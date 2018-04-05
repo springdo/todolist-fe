@@ -1,26 +1,18 @@
 <template>
   <div>
     <div class="itemCardAndFlag">
-
     <md-list-item
-      @click="markCompleted"
+      @click="markCompleted()"
       >
       <!-- TODO find a nice way of not calling markdone when clicking flag on card rather than calling "markDone" twice -->
-      
-      <!-- Material design checkbox not displaying, EDIT: Still can't figure out why it's not displaying -->
-      <!-- <md-checkbox :v-model="isActive">x</md-checkbox> -->
-      <!-- <input type="checkbox" v-model="todoItem.complete"/> -->
       <checkbox v-model="todoItem.completed"/> 
 
       <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
-      <!-- find a nice way to utilise svg fill property without doing it inline -->
       <md-button 
-        @click="markImportant"
+        @click="markCompleted(); markImportant()"
         >
-        <svg :class="{'red-flag': todoItem.important}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" @click="markCompleted">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
-        </svg>
+        <!-- find a nice way to utilise svg fill property without doing it inline -->
+        <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
       </md-button>
     </md-list-item>
     </div>
@@ -51,8 +43,9 @@ export default {
     },
     markImportant() {
       console.info("INFO - Mark todo as important ", this.todoItem.important);
+      // this.todoItem.important = !this.todoItem.important;
       // TODO - FILL THIS OUT IN THE LAB EXERCISE
-
+      // this.todoItem.important = !this.todoItem.important;
     }
   }
 };

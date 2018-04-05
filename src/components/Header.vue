@@ -94,6 +94,7 @@ export default {
       margin-top: 13px;
       font-size: 1.4em;
       font-weight: 700;
+      text-align: left;
     }
   }
 }

@@ -9,18 +9,12 @@
       </div>
     </md-list>
     <!-- <XofYitems /> -->
-    <div class="xofyDone">
-      <span>{{sumDoneTodoItems(todos)}} out of {{this.todos.length}} done. </span>
-      <button v-on:click="clearDoneTodos()">CLEAR DONE</button>
-      <button v-on:click="clearTodos()">CLEAR ALL</button>
-    </div>
   </div>
 </template>
 
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
-// import XofYitems from "@/components/XofYitems.vue";
 import EventBus from "@/services/EventBus";
 import { mapGetters } from "vuex";
 
@@ -36,31 +30,13 @@ export default {
   },
   created() {
     this.$store.dispatch("loadTodos");
-  },
-  methods: {
-    // updateTodoList(todo) {
-    //   this.todos.push(todo);
-    // },
-    sumDoneTodoItems(todos) {
-      return todos.reduce(
-        (result, tdItem) => (tdItem.completed ? result + 1 : result),
-        0
-      );
-    },
-    clearDoneTodos() {
-      this.$store.dispatch("clearTodos");
-    },
-    clearTodos() {
-      // NOTE - true = all todos
-      this.$store.dispatch("clearTodos", true);
-    }
-  }
+  }  
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .xofyDone {
-  display: inline-block;
+  display: inl ine-block;
 }
 </style>

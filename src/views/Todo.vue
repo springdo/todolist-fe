@@ -9,6 +9,7 @@
       <md-card-content>
           <NewTodo placeholderMsg="Add a new todos here"/>
           <ListOfTodos todos="this.todos"/>
+          <XofYItems/>
       </md-card-content>
 
       <div class="image-footer"> 
@@ -24,6 +25,7 @@
 import Header from "@/components/Header.vue";
 import NewTodo from "@/components/NewTodo.vue";
 import ListOfTodos from "@/components/ListOfTodos.vue";
+import XofYItems from "@/components/XofYItems.vue";
 import EventBus from "@/services/EventBus";
 import { mapMutations } from 'vuex'
 
@@ -32,7 +34,8 @@ export default {
   components: {
     Header,
     ListOfTodos,
-    NewTodo
+    NewTodo,
+    XofYItems
   },
   methods: {
     ...mapMutations([
