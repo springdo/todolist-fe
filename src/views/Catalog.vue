@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
+    <h2>Playground for messing about with components</h2>
     <NewTodo placeholderMsg="Add a new todo" @NEWTODOADDED="newTodoAdded"/>
     <TodoItem todoItem="Have a beers"/>
     <ListOfTodos todos="this.todos"/>
