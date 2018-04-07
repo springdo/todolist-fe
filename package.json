@@ -13,7 +13,7 @@
     "package": "zip -r package-contents.zip package-contents",
     "prepare-nexus": "curl -X POST  -u admin:admin123 -H 'Content-Type: application/json' -H 'Accept: application/json' -d @nexus.json http://${NEXUS_ENDPOINT}/service/siesta/rest/v1/script && curl -X POST  -u admin:admin123 -H 'Content-Type: text/plain' -H 'Accept: application/json' http://${NEXUS_ENDPOINT}/service/siesta/rest/v1/script/zip/run",
     "publish": "curl -vvv -u admin:admin123 --upload-file package-contents.zip http://${NEXUS_ENDPOINT}/repository/zip/com/redhat/todolist/${JOB_NAME}.${BUILD_NUMBER}/package-contents.zip",
-    "publish:get": "curl -vvv http://admin:admin123@${NEXUS_ENDPOINT}/repository/zip/com/redhat/todolist/${JOB_NAME}.${BUILD_NUMBER}/package-contents.zip -o package-contents.zip"
+    "publish:get": "curl -vvv http://admin:admin123@${NEXUS_ENDPOINT}/repository/zip/com/redhat/todolist/${BUILD_TAG}/package-contents.zip -o package-contents.zip"
   },
   "dependencies": {
     "axios": "^0.18.0",

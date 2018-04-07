@@ -14,6 +14,6 @@ USER 1001
 
 RUN scl enable rh-nodejs6 'npm install http-server'
 
-COPY build /usr/src/app
+COPY dist /usr/src/app
 
 CMD ["./node_modules/.bin/http-server"]
