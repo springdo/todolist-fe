@@ -3,17 +3,17 @@ import config from "@/config";
 
 const dummyData = [
   {
-    title: "Learn awesome things about Labs",
+    title: "Learn awesome things about Labs 🔬",
     completed: false,
     important: false
   },
   {
-    title: "Learn about my friend Jenkins",
+    title: "Learn about my friend Jenkins 🎉",
     completed: true,
     important: false
   },
   {
-    title: "Have a poop",
+    title: "Drink Coffee ☕💩",
     completed: false,
     important: true
   }
@@ -46,9 +46,19 @@ export default {
       completed: false,
       important: false
     };
-    axios.post(config.todoEndpoint, todo).then(mongoTodo => {
-      commit("ADD_TODO", mongoTodo.data);
-    });
+    axios
+      .post(config.todoEndpoint, todo)
+      .then(mongoTodo => {
+        commit("ADD_TODO", mongoTodo.data);
+      })
+      .catch(err => {
+        if (err) {
+          console.info("INFO - Adding dummy todo because of ", err);
+          let mongoTodo = todo;
+          mongoTodo._id = "fake-todo-item-" + Math.random();
+          commit("ADD_TODO", mongoTodo);
+        }
+      });
   },
   setNewTodo({ commit }, todo) {
     // debugger
