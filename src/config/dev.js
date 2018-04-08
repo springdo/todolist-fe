@@ -1,3 +1,3 @@
 export default {
-  todoEndpoint: "http://<YOUR_BACKEN_ROUTE>/api/todos"
+  todoEndpoint: "http://todolist-api.<YOUR_NAME>-dev.svc.cluster.local:9000/api/todos"
 };
