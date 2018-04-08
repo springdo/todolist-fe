@@ -1,3 +1,3 @@
 export default {
-  todoEndpoint: "http://todolist-api.donal-dev.svc.cluster.local:9000/api/todos"
+  todoEndpoint: "http://todolist-api-donal-dev.apps.s8.core.rht-labs.com/api/todos"
 };
