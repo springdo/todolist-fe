@@ -10,6 +10,8 @@
     "lint": "vue-cli-service lint",
     "clean": "rm -rf reports dist package-contents*",
     "build:ci": "npm run build && mkdir -p package-contents && cp -vr dist Dockerfile package-contents",
+    "build:ci:dev": "cp src/config/dev.js src/config/index.js && npm run build && mkdir -p package-contents && cp -vr dist Dockerfile package-contents",
+    "build:ci:test": "cp src/config/test.js src/config/index.js && npm run build && mkdir -p package-contents && cp -vr dist Dockerfile package-contents",
     "package": "zip -r package-contents.zip package-contents",
     "prepare-nexus": "curl -X POST  -u admin:admin123 -H 'Content-Type: application/json' -H 'Accept: application/json' -d @nexus.json http://${NEXUS_ENDPOINT}/service/siesta/rest/v1/script && curl -X POST  -u admin:admin123 -H 'Content-Type: text/plain' -H 'Accept: application/json' http://${NEXUS_ENDPOINT}/service/siesta/rest/v1/script/zip/run",
     "publish": "curl -vvv -u admin:admin123 --upload-file package-contents.zip http://${NEXUS_ENDPOINT}/repository/zip/com/redhat/todolist/${JOB_NAME}.${BUILD_NUMBER}/package-contents.zip",
