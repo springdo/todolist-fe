@@ -17,25 +17,11 @@ openshift_cluster_content:
     tags:
     - deploy
     - dev
-  - name:  todolist-fe-db
-    template: "{{ playbook_dir }}/templates/mongodb.yml"
-    params: "{{ playbook_dir }}/params/mongodb"
-    namespace: "{{ dev_namespace }}"
-    tags:
-    - deploy
-    - dev
 - object: deploy-test
   content:
   - name:  todolist-fe
     template: "{{ playbook_dir }}/templates/todolist-fe-deploy.yml"
     params: "{{ playbook_dir }}/params/test"
-    namespace: "{{ test_namespace }}"
-    tags:
-    - deploy
-    - test
-  - name:  todolist-fe-db
-    template: "{{ playbook_dir }}/templates/mongodb.yml"
-    params: "{{ playbook_dir }}/params/mongodb"
     namespace: "{{ test_namespace }}"
     tags:
     - deploy
