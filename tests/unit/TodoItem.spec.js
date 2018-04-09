@@ -7,24 +7,42 @@ import * as all from "../unit/setup.js";
 describe("TodoItem.vue", () => {
   
   it("has the expected html structure", () => {
-    const todoItem = { };
+    const todoItem = {};
     const wrapper = shallow(TodoItem, { 
       propsData: { todoItem } 
     });
     expect(wrapper.element).toMatchSnapshot();
   });
   
-  // it("has the expected html structure", () => {
-  //   const todoItem = {
-  //     completed: false,
-  //     title: "",
-  //     important: false
-  //   };
-  //   const wrapper = shallow(TodoItem, { 
-  //     propsData: { todoItem } 
-  //   });
-  //   expect(wrapper.element).toMatchSnapshot();
-  // });
+  it("Renders title as 'TestTitle'", () => {
+    const todoItem = {
+      title: "TestTitle"
+    };
+    const wrapper = shallow(TodoItem, { 
+      propsData: { todoItem } 
+    });
+    expect(wrapper.vm.todoItem.title).toMatch("TestTitle");
+  });
+  
+  it("Renders completed as true", () => {
+    const todoItem = {
+      completed : true
+    };
+    const wrapper = shallow(TodoItem, { 
+      propsData: { todoItem } 
+    });
+    expect(wrapper.vm.todoItem.completed).toEqual(true);
+  });
+  
+  it("Renders important as false", () => {
+    const todoItem = {
+      important : false
+    };
+    const wrapper = shallow(TodoItem, { 
+      propsData: { todoItem } 
+    });
+    expect(wrapper.vm.todoItem.important).toEqual(false);
+  });
   
   // it("renders props.placeholderMsg when passed", () => {
   //   const msg = "Add a Todo";
