@@ -18,4 +18,16 @@ describe("NewTodo.vue", () => {
     expect(wrapper.vm.newTodo).toMatch("");
   });
 
+  // it('has the expected html structure', () => {
+  //   const wrapper = shallow(NewTodo);
+  //   expect(wrapper.element).toMatchSnapshot()
+  // });
+
+  // it("renders newTodo as test string ", () => {
+  //   const wrapper = shallow(NewTodo, {
+  //     propsData: { newTodo: "test string" }
+  //   });
+  //   expect(wrapper.vm.newTodo).toMatch("test string");
+  // });
+  
 });
