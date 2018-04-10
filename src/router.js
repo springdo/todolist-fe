@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Todo from "./views/Todo.vue";
-import Catalog from "./views/Catalog.vue";
+import ComponentView from "./views/ComponentView.vue";
 
 Vue.use(Router);
 
@@ -19,9 +19,9 @@ export default new Router({
       component: Todo
     },
     {
-      path: "/component-catalog",
-      name: "catalog",
-      component: Catalog
+      path: "/component-view",
+      name: "Components",
+      component: ComponentView
     }
   ]
 });

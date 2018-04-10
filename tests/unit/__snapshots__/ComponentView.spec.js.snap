@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentView.vue should render like the snapshot 1`] = `
+<div
+  class="home"
+>
+  <h2>
+    Over view of the todo app's component structure
+  </h2>
+  
+  TODO - have aidan's magical picture here!
+
+</div>
+`;
