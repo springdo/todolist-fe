@@ -8,32 +8,30 @@
         ></TodoItem>
       </div>
     </md-list>
-    <!-- <XofYitems /> -->
   </div>
 </template>
 
 
 <script>
 import TodoItem from "@/components/TodoItem.vue";
-import EventBus from "@/services/EventBus";
 import { mapGetters } from "vuex";
 
 export default {
   name: "ListOfTodos",
   props: {},
   components: {
-    TodoItem,
-    // XofYitems
+    TodoItem
   },
   computed: {
     ...mapGetters(["todos"])
   },
   created() {
     this.$store.dispatch("loadTodos");
-  }  
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 </style>

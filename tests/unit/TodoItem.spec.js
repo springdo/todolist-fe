@@ -33,6 +33,14 @@ describe("TodoItem.vue", () => {
     });
     expect(wrapper.vm.todoItem.completed).toEqual(true);
   });
+
+  // it("won't render additional props", () => {
+  //   const biscuits = "digestives"
+  //   const wrapper = shallow(TodoItem, { 
+  //     propsData: { biscuits } 
+  //   });
+  //   expect(wrapper.vm.todoItem).toBe("undefined");
+  // });
   
   it("Renders important as false", () => {
     const todoItem = {

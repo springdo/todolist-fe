@@ -4,15 +4,14 @@
     <md-list-item
       @click="markCompleted()"
       >
-      <!-- TODO find a nice way of not calling markdone when clicking flag on card rather than calling "markDone" twice -->
-      <checkbox v-model="todoItem.completed"/> 
+      <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
 
       <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
     </md-list-item>
       <md-button class="flag"
         @click="markImportant()"
         >
-        <!-- find a nice way to utilise svg fill property without doing it inline -->
+        <!-- find a nice way to utilise svg fill property without doing it all inline -->
         <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
       </md-button>
     </div>
@@ -30,12 +29,6 @@ export default {
     // type any object ;)
     todoItem: {}
   },
-  data() {
-    return {
-      // isActive: false,
-      // isImportant: false
-    };
-  },
   methods: {
     markCompleted() {
       this.$store.dispatch("markTodoCompleted", this.todoItem._id);
@@ -43,7 +36,6 @@ export default {
     },
     markImportant() {
       console.info("INFO - Mark todo as important ", this.todoItem.important);
-      // this.todoItem.important = !this.todoItem.important;
       // TODO - FILL THIS OUT IN THE LAB EXERCISE
       // this.todoItem.important = !this.todoItem.important;
     }

@@ -13,7 +13,7 @@
       </md-card-content>
 
       <div class="image-footer"> 
-        <img class="image-footer-logo" src="../assets/oil-protobadge.png" alt="Open Innovation Labs logo" />
+        <img class="image-footer-logo" src="@/assets/oil-protobadge.png" alt="Open Innovation Labs logo" />
       </div>
 
     </md-card>
@@ -26,7 +26,6 @@ import Header from "@/components/Header.vue";
 import NewTodo from "@/components/NewTodo.vue";
 import ListOfTodos from "@/components/ListOfTodos.vue";
 import XofYItems from "@/components/XofYItems.vue";
-import EventBus from "@/services/EventBus";
 import { mapMutations } from 'vuex'
 
 export default {

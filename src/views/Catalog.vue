@@ -18,8 +18,6 @@ import NewTodo from "@/components/NewTodo.vue";
 import TodoItem from "@/components/TodoItem.vue";
 import ListOfTodos from "@/components/ListOfTodos.vue";
 
-import EventBus from "@/services/EventBus";
-
 export default {
   name: "Catalog",
   components: {
