@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from "@vue/test-utils";
+import { shallow, createLocalVue, mount } from "@vue/test-utils";
 import Vuex from 'vuex';
 import NewTodo from "@/components/NewTodo.vue";
 // import { expect } from 'chai'
@@ -56,6 +56,11 @@ describe("NewTodo.vue", () => {
     const wrapper = shallow(NewTodo);
     expect(wrapper.element).toMatchSnapshot();
   });
+
+  // it("has the expected html structure", () => {
+  //   const wrapper = mount(NewTodo);
+  //   expect(wrapper.element).toMatchSnapshot();
+  // });
 
   // it("renders newTodo as test string ", () => {
   //   const wrapper = shallow(NewTodo, {
