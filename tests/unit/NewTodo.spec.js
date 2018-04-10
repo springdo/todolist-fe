@@ -31,11 +31,11 @@ describe("NewTodo.vue", () => {
     expect(methods.newTodoAdded).toHaveBeenCalled()
   });
 
-  it("calls newTodoAdded() when keyup.enter hit.", () => {
+  it("does not call newTodoAdded() when keyup.space hit.", () => {
     // time to try and test some vuex stuff and see if the methods are called when expected.
     const wrapper = shallow(NewTodo, { methods , localVue})
     const input = wrapper.find(".md-input");
-    input.trigger('keydown.space')
+    input.trigger('keyup.space')
     expect(methods.newTodoAdded).not.toHaveBeenCalled()
   });
 
