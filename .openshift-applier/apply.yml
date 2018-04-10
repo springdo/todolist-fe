@@ -1,5 +1,5 @@
 ---
-- name: Build and Deploy todolist-api 
+- name: Build and Deploy todolist-fe 
   hosts: app
   vars:
     ci_cd_namespace: <YOUR_NAME>-ci-cd
