@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h2>Over view of the todo app's component structure</h2>
-    TODO - have aidan's magical picture here!
+    <h2>Overview of the todo app's component structure</h2>
+    <img src="@/assets/ComponentsLabs.png"/>
   </div>
 
 </template>
