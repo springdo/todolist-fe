@@ -5,7 +5,7 @@ import XofYItems from "@/components/XofYItems.vue";
 import * as all from "../setup.js";
 
 describe("Todo.vue", () => {
-  it("should render like the snapshot", () => {
+  it("should render the html layout like the snapshot (see /__snapshots__/Todo.spec.js.snap)", () => {
     const wrapper = shallow(Todo);
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -17,4 +17,6 @@ describe("Todo.vue", () => {
     const wrapper = shallow(Todo);
     expect(wrapper.find(XofYItems)).toBeTruthy();
   });
+  // NEW TEST GOES HERE
+  
 });
