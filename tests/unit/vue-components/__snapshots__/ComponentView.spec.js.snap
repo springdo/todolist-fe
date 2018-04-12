@@ -5,10 +5,11 @@ exports[`ComponentView.vue should render like the snapshot 1`] = `
   class="home"
 >
   <h2>
-    Over view of the todo app's component structure
+    Overview of the todo app's component structure
   </h2>
-  
-  TODO - have aidan's magical picture here!
-
+   
+  <img
+    src="@/assets/ComponentsLabs.png"
+  />
 </div>
 `;

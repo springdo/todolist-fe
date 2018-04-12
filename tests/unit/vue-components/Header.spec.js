@@ -1,6 +1,6 @@
 import { shallow, createLocalVue } from "@vue/test-utils";
 import Header from "@/components/Header.vue";
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 describe("Header.vue", () => {
 

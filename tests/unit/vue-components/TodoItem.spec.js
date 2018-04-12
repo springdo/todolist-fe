@@ -2,7 +2,7 @@ import { shallow } from "@vue/test-utils";
 import TodoItem from "@/components/TodoItem.vue";
 // import { expect } from 'chai'
 
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 describe("TodoItem.vue", () => {
   

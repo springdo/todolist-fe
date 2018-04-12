@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import ListOfTodos from "@/components/ListOfTodos.vue";
 // import { expect } from 'chai'
 
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 const localVue = createLocalVue();
 

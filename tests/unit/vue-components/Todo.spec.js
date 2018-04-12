@@ -2,7 +2,7 @@ import { shallow } from "@vue/test-utils";
 import Todo from "@/views/Todo.vue";
 import Header from "@/components/Header.vue";
 import XofYItems from "@/components/XofYItems.vue";
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 describe("Todo.vue", () => {
   it("should render like the snapshot", () => {

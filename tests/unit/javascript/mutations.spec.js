@@ -1,5 +1,5 @@
 import mutations from "@/store/mutations";
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 let state;
 const todo = {

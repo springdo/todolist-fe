@@ -2,7 +2,7 @@ import { shallow, createLocalVue, mount } from "@vue/test-utils";
 import Vuex from "vuex";
 import XofYItems from "@/components/XofYItems.vue";
 
-import * as all from "../unit/setup.js";
+import * as all from "../setup.js";
 
 const localVue = createLocalVue();
 
