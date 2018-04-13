@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     markCompleted() {
-      this.$store.dispatch("markTodoCompleted", this.todoItem._id);
+      this.$store.dispatch("updateTodo", this.todoItem._id);
       console.info("INFO - Mark todo as completed ", this.todoItem.completed);
     },
     markImportant() {
