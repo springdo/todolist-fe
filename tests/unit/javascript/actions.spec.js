@@ -11,10 +11,12 @@ const todos = [
 ];
 
 describe("load todos", () => {
-  it("should call commit to the mutation function twice", (done) => {
-    const commit = sinon.spy();
+  beforeEach(() =>{
     let mock = new MockAdapter(axios);
     mock.onGet('http://localhost:9000/api/todos').reply(200, todos);
+  });
+  it("should call commit to the mutation function twice", (done) => {
+    const commit = sinon.spy();
     actions.loadTodos({ commit }).then(() => {
       // console.log(commit)
       expect(commit.calledTwice).toBe(true);
@@ -23,8 +25,6 @@ describe("load todos", () => {
   });
   it("should first call SET_LOADING", (done) => {
     const commit = sinon.spy();
-    let mock = new MockAdapter(axios);
-    mock.onGet('http://localhost:9000/api/todos').reply(200, todos);
     actions.loadTodos({ commit }).then(() => {
       // console.log(commit.firstCall.args[0])
       expect(commit.firstCall.args[0]).toBe("SET_TODOS");
@@ -33,8 +33,6 @@ describe("load todos", () => {
   });
   it("should second call SET_TODOS", (done) => {
     const commit = sinon.spy();
-    let mock = new MockAdapter(axios);
-    mock.onGet('http://localhost:9000/api/todos').reply(200, todos);
     actions.loadTodos({ commit }).then(() => {
       // console.log(commit)
       expect(commit.secondCall.args[0]).toBe("SET_LOADING");
