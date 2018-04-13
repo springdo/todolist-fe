@@ -13,7 +13,12 @@ const doneTodos = [{
 },{
     completed: false,
     title: "easy testing is fun"
-}]
+}];
+const importantTodos = [{
+    completed: true,
+    title: "testing sucks",
+    important: true
+  }]
 
 describe("Mutation tests", () => {
   beforeEach(() => {
@@ -76,5 +81,18 @@ describe("Mutation tests", () => {
     // check the reversy!
     mutations.MARK_TODO_COMPLETED(state, 0);
     expect(state.todos[0].completed).toBe(true);
+  });
+
+  it("it should MARK_TODO_IMPORTANT as false", () => {
+    state.todos = importantTodos;
+    mutations.MARK_TODO_IMPORTANT(state, 0);
+    expect(state.todos[0].important).toBe(false);
+  });
+  
+  it("it should MARK_TODO_IMPORTANT as true", () => {
+    state.todos = importantTodos;
+    state.todos[0].important = false;
+    mutations.MARK_TODO_IMPORTANT(state, 0);
+    expect(state.todos[0].important).toBe(true);
   });
 });

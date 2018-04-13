@@ -91,7 +91,7 @@ export default {
     }
     //  2 return array of promises and resolve all
   },
-  markTodoCompleted({ commit, state }, id) {
+  updateTodo({ commit, state }, id) {
     let i = state.todos.findIndex(todo => todo._id === id);
     // todo - add back end
     axios

@@ -1,8 +1,13 @@
-import { shallow, mount } from "@vue/test-utils";
+import { shallow, mount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
 import TodoItem from "@/components/TodoItem.vue";
 // import { expect } from 'chai'
 
 import * as all from "../setup.js";
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
 
 const todoItem = {
   title: "Love Front End testing :)",
@@ -10,36 +15,35 @@ const todoItem = {
 };
 
 describe("TodoItem.vue", () => {
-  
   it("has the expected html structure", () => {
-    const wrapper = shallow(TodoItem, { 
-      propsData: { todoItem } 
+    const wrapper = shallow(TodoItem, {
+      propsData: { todoItem }
     });
     expect(wrapper.element).toMatchSnapshot();
   });
-  
+
   it("Renders title as 'Love Front End testing :)'", () => {
-    const wrapper = shallow(TodoItem, { 
-      propsData: { todoItem } 
+    const wrapper = shallow(TodoItem, {
+      propsData: { todoItem }
     });
     expect(wrapper.vm.todoItem.title).toMatch("Love Front End testing :)");
   });
-  
+
   it("Renders completed as true", () => {
-    const wrapper = shallow(TodoItem, { 
-      propsData: { todoItem } 
+    const wrapper = shallow(TodoItem, {
+      propsData: { todoItem }
     });
     expect(wrapper.vm.todoItem.completed).toEqual(true);
   });
 
   // it("won't render additional props", () => {
   //   const biscuits = "digestives"
-  //   const wrapper = shallow(TodoItem, { 
-  //     propsData: { biscuits } 
+  //   const wrapper = shallow(TodoItem, {
+  //     propsData: { biscuits }
   //   });
   //   expect(wrapper.vm.todoItem).toBe("undefined");
   // });
-  
+
   // it("renders props.placeholderMsg when passed", () => {
   //   const msg = "Add a Todo";
   //   const wrapper = shallow(NewTodo, {
@@ -52,9 +56,11 @@ describe("TodoItem.vue", () => {
   //   const wrapper = shallow(NewTodo, {});
   //   expect(wrapper.vm.newTodo).toMatch("");
   // });
-
 });
+
 let importantTodo;
+let methods;
+
 describe("Important Flag button ", () => {
   beforeEach(() => {
     importantTodo = {
@@ -62,6 +68,7 @@ describe("Important Flag button ", () => {
       completed: true,
       important: true
     };
+    methods = { markImportant: jest.fn() };
   });
 
   it("should render a button with important flag", () => {
@@ -77,16 +84,20 @@ describe("Important Flag button ", () => {
     expect(wrapper.find(".red-flag").exists()).toBe(true);
   });
   it("should set the colour to not red when false", () => {
-    importantTodo.important = false
+    importantTodo.important = false;
     const wrapper = mount(TodoItem, {
       propsData: { todoItem: importantTodo }
     });
     expect(wrapper.find(".red-flag").exists()).toBe(false);
   });
-  it("call the store when clicked", () => {
-    // const wrapper = shallow(TodoItem, { methods , localVue})
-    // const input = wrapper.find(".md-input");
-    // input.trigger('keyup.enter')
-    // expect(methods.newTodoAdded).toHaveBeenCalled()
+
+  it("call makImportant when clicked", () => {
+    const wrapper = mount(TodoItem, {
+      methods,
+      propsData: { todoItem: importantTodo }
+    });
+    const input = wrapper.find(".important-flag");
+    input.trigger("click");
+    expect(methods.markImportant).toHaveBeenCalled();
   });
 });
