@@ -1,5 +1,4 @@
 import actions from "@/store/actions";
-import store from "@/store";
 import * as all from "../setup.js";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
@@ -9,6 +8,7 @@ const todos = [
   { id: 1, title: "learn testing", completed: true },
   { id: 2, title: "learn testing 2", completed: false }
 ];
+let state;
 
 describe("loadTodos", () => {
   beforeEach(() => {
@@ -41,36 +41,6 @@ describe("loadTodos", () => {
   });
 });
 
-/*
-  addTodo({ commit, state }) {
-    if (!state.newTodo) {
-      // do not add empty todos
-      return;
-    }
-    // debugger
-    const todo = {
-      title: state.newTodo,
-      completed: false,
-      important: false
-    };
-    axios
-      .post(config.todoEndpoint, todo)
-      .then(mongoTodo => {
-        commit("ADD_TODO", mongoTodo.data);
-      })
-      .catch(err => {
-        if (err) {
-          console.info("INFO - Adding dummy todo because of ", err);
-          let mongoTodo = todo;
-          mongoTodo._id = "fake-todo-item-" + Math.random();
-          commit("ADD_TODO", mongoTodo);
-        }
-      });
-  },
-
-*/
-
-let state;
 describe("addTodos", () => {
   beforeEach(() => {
     state = {};
@@ -97,3 +67,73 @@ describe("addTodos", () => {
     });
   });
 });
+
+describe("setNewTodo", () => {
+  it("should call SET_NEW_TODO", () => {
+    const commit = sinon.spy();
+    actions.setNewTodo({ commit, todo: "learn stuff about mockin" });
+    expect(commit.firstCall.args[0]).toBe("SET_NEW_TODO");
+  });
+});
+
+describe("clearNewTodo", () => {
+  it("should call CLEAR_NEW_TODO", () => {
+    const commit = sinon.spy();
+    actions.clearNewTodo({ commit });
+    expect(commit.firstCall.args[0]).toBe("CLEAR_NEW_TODO");
+  });
+});
+
+describe("clearTodos", () => {
+  it("should call CLEAR_ALL_TODOS when all is true", () => {
+    const commit = sinon.spy();
+    state.todos = todos;
+    actions.clearTodos({ commit, state }, true);
+    expect(commit.firstCall.args[0]).toBe("CLEAR_ALL_TODOS");
+  });
+
+  it("should call CLEAR_ALL_DONE_TODOS when all is not passed", () => {
+    const commit = sinon.spy();
+    state.todos = todos;
+    actions.clearTodos({ commit, state });
+    expect(commit.firstCall.args[0]).toBe("CLEAR_ALL_DONE_TODOS");
+  });
+});
+
+/* 
+    updateTodo({ commit, state }, id) {
+    let i = state.todos.findIndex(todo => todo._id === id);
+    // todo - add back end
+    return axios
+      .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
+      .then(data => {
+        console.info("INFO - item " + id + " updated", data);
+        commit("MARK_TODO_COMPLETED", i);
+      });
+  }
+*/
+// describe("updateTodo", () => {
+//   beforeEach(() => {
+//     state = {};
+//     let mock = new MockAdapter(axios);
+//     mock.onPut(/http:\/\/localhost:9000\/api\/todos\/.*/, {}).reply(200, todos);
+//   });
+//   it("should call commit to the mutation function once", done => {
+//     const commit = sinon.spy();
+//     state.newTodo = "Learn some mocking";
+//     actions.updateTodo({ commit, state }).then(() => {
+//       // console.log(commit)
+//       expect(commit.calledOnce).toBe(true);
+//       done();
+//     });
+//   });
+//   it("should call MARK_TODO_COMPLETED", done => {
+//     const commit = sinon.spy();
+//     state.newTodo = "Learn some mocking";
+//     actions.updateTodo({ commit, state }).then(() => {
+//       // console.log(commit.firstCall.args[0])
+//       expect(commit.firstCall.args[0]).toBe("ADD_TODO");
+//       done();
+//     });
+//   });
+// });
