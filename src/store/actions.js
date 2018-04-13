@@ -20,7 +20,7 @@ const dummyData = [
 ];
 export default {
   loadTodos({ commit }) {
-    axios
+    return axios
       .get(config.todoEndpoint)
       .then(r => r.data)
       .then(todos => {

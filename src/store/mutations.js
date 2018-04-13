@@ -28,7 +28,7 @@ export default {
     state.todos = [];
   },
   MARK_TODO_COMPLETED(state, index) {
-    console.log('INFO - Clearing all todos');
+    console.log('INFO - Mark todo as completed');
     state.todos[index].completed = !state.todos[index].completed;
   }
 };

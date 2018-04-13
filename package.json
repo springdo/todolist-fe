@@ -36,12 +36,14 @@
     "@vue/cli-service": "^3.0.0-beta.6",
     "@vue/eslint-config-prettier": "^3.0.0-beta.6",
     "@vue/test-utils": "^1.0.0-beta.10",
+    "axios-mock-adapter": "^1.15.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^22.0.4",
     "chai": "^4.1.2",
     "jest-junit-reporter": "^1.1.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "sinon": "^4.5.0",
     "vue-template-compiler": "^2.5.13"
   },
   "browserslist": [
