@@ -91,14 +91,17 @@ export default {
     }
     //  2 return array of promises and resolve all
   },
-  updateTodo({ commit, state }, id) {
+  updateTodo({ commit, state }, {id, important}) {
     let i = state.todos.findIndex(todo => todo._id === id);
-    // todo - add back end
     axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
       .then(data => {
         console.info("INFO - item " + id + " updated", data);
       });
-    commit("MARK_TODO_COMPLETED", i);
+    if (important) {
+      commit("MARK_TODO_IMPORTANT", i);
+    } else {
+      commit("MARK_TODO_COMPLETED", i);
+    }
   }
 };
