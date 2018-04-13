@@ -43,10 +43,10 @@ export default {
     // debugger
     const todo = {
       title: state.newTodo,
-      completed: false,
-      important: false
+      completed: false
     };
-    axios
+    // console.info("TESTINT BLAH BLAH ", todo);
+    return axios
       .post(config.todoEndpoint, todo)
       .then(mongoTodo => {
         commit("ADD_TODO", mongoTodo.data);
@@ -94,11 +94,11 @@ export default {
   updateTodo({ commit, state }, id) {
     let i = state.todos.findIndex(todo => todo._id === id);
     // todo - add back end
-    axios
+    return axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
       .then(data => {
         console.info("INFO - item " + id + " updated", data);
+        commit("MARK_TODO_COMPLETED", i);
       });
-    commit("MARK_TODO_COMPLETED", i);
   }
 };
