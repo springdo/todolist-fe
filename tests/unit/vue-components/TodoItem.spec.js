@@ -35,27 +35,6 @@ describe("TodoItem.vue", () => {
     });
     expect(wrapper.vm.todoItem.completed).toEqual(true);
   });
-
-  // it("won't render additional props", () => {
-  //   const biscuits = "digestives"
-  //   const wrapper = shallow(TodoItem, {
-  //     propsData: { biscuits }
-  //   });
-  //   expect(wrapper.vm.todoItem).toBe("undefined");
-  // });
-
-  // it("renders props.placeholderMsg when passed", () => {
-  //   const msg = "Add a Todo";
-  //   const wrapper = shallow(NewTodo, {
-  //     propsData: { placeholderMsg: msg }
-  //   });
-  //   expect(wrapper.vm._props.placeholderMsg).toMatch(msg);
-  // });
-
-  // it("renders newTodo as empty string", () => {
-  //   const wrapper = shallow(NewTodo, {});
-  //   expect(wrapper.vm.newTodo).toMatch("");
-  // });
 });
 
 let importantTodo;
@@ -75,12 +54,14 @@ describe("Important Flag button ", () => {
     const wrapper = mount(TodoItem, {
       propsData: { todoItem: importantTodo }
     });
+    // TODO - test goes here!
     expect(wrapper.find(".important-flag").exists()).toBe(true);
   });
   it("should set the colour to red when true", () => {
     const wrapper = mount(TodoItem, {
       propsData: { todoItem: importantTodo }
     });
+    // TODO - test goes here!
     expect(wrapper.find(".red-flag").exists()).toBe(true);
   });
   it("should set the colour to not red when false", () => {
@@ -88,6 +69,7 @@ describe("Important Flag button ", () => {
     const wrapper = mount(TodoItem, {
       propsData: { todoItem: importantTodo }
     });
+    // TODO - test goes here!
     expect(wrapper.find(".red-flag").exists()).toBe(false);
   });
 
@@ -96,6 +78,7 @@ describe("Important Flag button ", () => {
       methods,
       propsData: { todoItem: importantTodo }
     });
+    // TODO - test goes here!
     const input = wrapper.find(".important-flag");
     input.trigger("click");
     expect(methods.markImportant).toHaveBeenCalled();

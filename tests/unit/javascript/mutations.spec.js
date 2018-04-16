@@ -3,22 +3,27 @@ import * as all from "../setup.js";
 
 let state;
 const todo = {
-    completed: true,
-    title: "testing sucks"
+  completed: true,
+  title: "testing sucks"
 };
 const newTodo = "biscuits";
-const doneTodos = [{
+const doneTodos = [
+  {
     completed: true,
     title: "testing sucks"
-},{
+  },
+  {
     completed: false,
     title: "easy testing is fun"
-}];
-const importantTodos = [{
+  }
+];
+const importantTodos = [
+  {
     completed: true,
     title: "testing sucks",
     important: true
-  }]
+  }
+];
 
 describe("Mutation tests", () => {
   beforeEach(() => {
@@ -44,7 +49,7 @@ describe("Mutation tests", () => {
   });
 
   it("ADD_TODO", () => {
-    state.todos = []
+    state.todos = [];
     mutations.ADD_TODO(state, todo);
     expect(state.todos.length).toBe(1);
   });
@@ -52,13 +57,13 @@ describe("Mutation tests", () => {
   it("CLEAR_NEW_TODO", () => {
     state.newTodo = newTodo;
     mutations.CLEAR_NEW_TODO(state, newTodo);
-    expect(state.newTodo).toEqual('');
+    expect(state.newTodo).toEqual("");
   });
 
   it("CLEAR_NEW_TODO", () => {
     state.newTodo = newTodo;
     mutations.CLEAR_NEW_TODO(state);
-    expect(state.newTodo).toEqual('');
+    expect(state.newTodo).toEqual("");
   });
 
   it("CLEAR_ALL_DONE_TODOS", () => {
@@ -85,12 +90,14 @@ describe("Mutation tests", () => {
 
   it("it should MARK_TODO_IMPORTANT as false", () => {
     state.todos = importantTodos;
+    // TODO - test goes here!
     mutations.MARK_TODO_IMPORTANT(state, 0);
     expect(state.todos[0].important).toBe(false);
   });
-  
+
   it("it should MARK_TODO_IMPORTANT as true", () => {
     state.todos = importantTodos;
+    // TODO - test goes here!
     state.todos[0].important = false;
     mutations.MARK_TODO_IMPORTANT(state, 0);
     expect(state.todos[0].important).toBe(true);
