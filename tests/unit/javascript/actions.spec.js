@@ -5,8 +5,8 @@ import MockAdapter from "axios-mock-adapter";
 import sinon from "sinon";
 
 const todos = [
-  { id: 1, title: "learn testing", completed: true },
-  { id: 2, title: "learn testing 2", completed: false }
+  { _id: 1, title: "learn testing", completed: true },
+  { _id: 2, title: "learn testing 2", completed: false }
 ];
 let state;
 
@@ -101,7 +101,7 @@ describe("clearTodos", () => {
 });
 
 /* 
-    updateTodo({ commit, state }, id) {
+  updateTodo({ commit, state }, { id, important }) {
     let i = state.todos.findIndex(todo => todo._id === id);
     // todo - add back end
     return axios
@@ -112,28 +112,27 @@ describe("clearTodos", () => {
       });
   }
 */
-// describe("updateTodo", () => {
-//   beforeEach(() => {
-//     state = {};
-//     let mock = new MockAdapter(axios);
-//     mock.onPut(/http:\/\/localhost:9000\/api\/todos\/.*/, {}).reply(200, todos);
-//   });
-//   it("should call commit to the mutation function once", done => {
-//     const commit = sinon.spy();
-//     state.newTodo = "Learn some mocking";
-//     actions.updateTodo({ commit, state }).then(() => {
-//       // console.log(commit)
-//       expect(commit.calledOnce).toBe(true);
-//       done();
-//     });
-//   });
-//   it("should call MARK_TODO_COMPLETED", done => {
-//     const commit = sinon.spy();
-//     state.newTodo = "Learn some mocking";
-//     actions.updateTodo({ commit, state }).then(() => {
-//       // console.log(commit.firstCall.args[0])
-//       expect(commit.firstCall.args[0]).toBe("ADD_TODO");
-//       done();
-//     });
-//   });
-// });
+describe("updateTodo", () => {
+  beforeEach(() => {
+    state = {};
+    let mock = new MockAdapter(axios);
+    mock.onPut("http://localhost:9000/api/todos/1").reply(200, todos);
+  });
+  it("should call commit to the mutation function once", done => {
+    const commit = sinon.spy();
+    state.todos = todos;
+    actions.updateTodo({ commit, state }, { id: 1 }).then(() => {
+      expect(commit.calledOnce).toBe(true);
+      done();
+    });
+  });
+  it("should call MARK_TODO_COMPLETED", done => {
+    const commit = sinon.spy();
+    state.todos = todos;
+    actions.updateTodo({ commit, state }, { id: 1 }).then(() => {
+      // console.log(commit.firstCall.args[0])
+      expect(commit.firstCall.args[0]).toBe("MARK_TODO_COMPLETED");
+      done();
+    });
+  });
+});

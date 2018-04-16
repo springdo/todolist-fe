@@ -91,9 +91,10 @@ export default {
     }
     //  2 return array of promises and resolve all
   },
-  updateTodo({ commit, state }, id) {
+  /* eslint: ignore */
+  updateTodo({ commit, state }, { id, important }) {
     let i = state.todos.findIndex(todo => todo._id === id);
-    // todo - add back end
+    // console.info("BLAB HALASD", state);
     return axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
       .then(data => {
