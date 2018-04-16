@@ -69,7 +69,6 @@ describe("Important Flag button ", () => {
     });
     // TODO - test goes here!
   });
-
   it("call makImportant when clicked", () => {
     const wrapper = mount(TodoItem, {
       methods,

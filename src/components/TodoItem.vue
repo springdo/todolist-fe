@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="itemCardAndFlag">
-      <md-list-item
-        @click="markCompleted()"
-        >
-        <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
+    <md-list-item
+      @click="markCompleted()"
+      >
+      <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
 
         <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
       </md-list-item>
       <!-- TODO - SVG for use in Lab3 -->
-      <!-- <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg> -->
+        <!-- <svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg> -->
     </div>
   </div>
 </template>
