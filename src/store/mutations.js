@@ -30,9 +30,5 @@ export default {
   MARK_TODO_COMPLETED(state, index) {
     console.log("INFO - MARK_TODO_COMPLETED");
     state.todos[index].completed = !state.todos[index].completed;
-  },
-  MARK_TODO_IMPORTANT(state, index) {
-    console.log("INFO - MARK_TODO_IMPORTANT");
-    state.todos[index].important = !state.todos[index].important;
   }
 };

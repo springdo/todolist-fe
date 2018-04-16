@@ -1,19 +1,15 @@
 <template>
   <div>
     <div class="itemCardAndFlag">
-    <md-list-item
-      @click="markCompleted()"
-      >
-      <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
-
-      <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
-    </md-list-item>
-      <!-- TODO - Uncomment this as part of exercise3 -->
-      <md-button class="important-flag"
-        @click="markImportant()"
+      <md-list-item
+        @click="markCompleted()"
         >
-        <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
-      </md-button>
+        <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
+
+        <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
+      </md-list-item>
+      <!-- TODO - SVG for use in Lab3 -->
+      <!-- <svg :class="{'red-flag': todoItem.important}"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" ><path d="M0 0h24v24H0z" fill="none"/><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg> -->
     </div>
   </div>
 </template>
@@ -35,8 +31,6 @@ export default {
       console.info("INFO - Mark todo as completed ", this.todoItem.completed);
     },
     markImportant() {
-      this.$store.dispatch("updateTodo", {id :this.todoItem._id, important: true} );
-      console.info("INFO - Mark todo as important ", this.todoItem.important);
       // TODO - FILL THIS OUT IN THE LAB EXERCISE
     }
   }

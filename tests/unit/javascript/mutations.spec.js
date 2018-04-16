@@ -91,15 +91,12 @@ describe("Mutation tests", () => {
   it("it should MARK_TODO_IMPORTANT as false", () => {
     state.todos = importantTodos;
     // TODO - test goes here!
-    mutations.MARK_TODO_IMPORTANT(state, 0);
-    expect(state.todos[0].important).toBe(false);
+
   });
 
   it("it should MARK_TODO_IMPORTANT as true", () => {
     state.todos = importantTodos;
     // TODO - test goes here!
-    state.todos[0].important = false;
-    mutations.MARK_TODO_IMPORTANT(state, 0);
-    expect(state.todos[0].important).toBe(true);
+    
   });
 });

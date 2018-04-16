@@ -123,15 +123,6 @@ describe("updateTodo", () => {
       done();
     });
   });
-  it("should call MARK_TODO_IMPORTANT", done => {
-    const commit = sinon.spy();
-    state.todos = todos;
-    actions
-      .updateTodo({ commit, state }, { id: 1, important: true })
-      .then(() => {
-        // TODO - test goes here!
-        expect(commit.firstCall.args[0]).toBe("MARK_TODO_IMPORTANT");
-        done();
-      });
-  });
+  // TODO - test goes here!
+
 });

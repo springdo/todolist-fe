@@ -98,14 +98,10 @@ export default {
   updateTodo({ commit, state }, { id, important }) {
     let i = state.todos.findIndex(todo => todo._id === id);
     if (important) {
-      commit("MARK_TODO_IMPORTANT", i);
+      // TODO - add commit imporant here!
     } else {
       commit("MARK_TODO_COMPLETED", i);
     }
-    console.info(
-      "TESTSY MC TESTFACES",
-      config.todoEndpoint + "/" + state.todos[i]._id
-    );
     // Fire and forget style backend update ;)
     return axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])

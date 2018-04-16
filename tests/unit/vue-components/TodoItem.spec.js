@@ -19,7 +19,7 @@ describe("TodoItem.vue", () => {
     const wrapper = shallow(TodoItem, {
       propsData: { todoItem }
     });
-    expect(wrapper.element).toMatchSnapshot();
+    // expect(wrapper.element).toMatchSnapshot();
   });
 
   it("Renders title as 'Love Front End testing :)'", () => {
@@ -55,14 +55,12 @@ describe("Important Flag button ", () => {
       propsData: { todoItem: importantTodo }
     });
     // TODO - test goes here!
-    expect(wrapper.find(".important-flag").exists()).toBe(true);
   });
   it("should set the colour to red when true", () => {
     const wrapper = mount(TodoItem, {
       propsData: { todoItem: importantTodo }
     });
     // TODO - test goes here!
-    expect(wrapper.find(".red-flag").exists()).toBe(true);
   });
   it("should set the colour to not red when false", () => {
     importantTodo.important = false;
@@ -70,7 +68,6 @@ describe("Important Flag button ", () => {
       propsData: { todoItem: importantTodo }
     });
     // TODO - test goes here!
-    expect(wrapper.find(".red-flag").exists()).toBe(false);
   });
 
   it("call makImportant when clicked", () => {
@@ -79,8 +76,5 @@ describe("Important Flag button ", () => {
       propsData: { todoItem: importantTodo }
     });
     // TODO - test goes here!
-    const input = wrapper.find(".important-flag");
-    input.trigger("click");
-    expect(methods.markImportant).toHaveBeenCalled();
   });
 });
