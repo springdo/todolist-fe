@@ -102,6 +102,10 @@ export default {
     } else {
       commit("MARK_TODO_COMPLETED", i);
     }
+    console.info(
+      "TESTSY MC TESTFACES",
+      config.todoEndpoint + "/" + state.todos[i]._id
+    );
     // Fire and forget style backend update ;)
     return axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])

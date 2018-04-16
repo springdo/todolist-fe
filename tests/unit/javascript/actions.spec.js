@@ -100,18 +100,6 @@ describe("clearTodos", () => {
   });
 });
 
-/* 
-  updateTodo({ commit, state }, { id, important }) {
-    let i = state.todos.findIndex(todo => todo._id === id);
-    // todo - add back end
-    return axios
-      .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
-      .then(data => {
-        console.info("INFO - item " + id + " updated", data);
-        commit("MARK_TODO_COMPLETED", i);
-      });
-  }
-*/
 describe("updateTodo", () => {
   beforeEach(() => {
     state = {};
@@ -134,5 +122,16 @@ describe("updateTodo", () => {
       expect(commit.firstCall.args[0]).toBe("MARK_TODO_COMPLETED");
       done();
     });
+  });
+  it("should call MARK_TODO_IMPORTANT", done => {
+    const commit = sinon.spy();
+    state.todos = todos;
+    actions
+      .updateTodo({ commit, state }, { id: 1, important: true })
+      .then(() => {
+        // console.log(commit.firstCall.args[0])
+        expect(commit.firstCall.args[0]).toBe("MARK_TODO_IMPORTANT");
+        done();
+      });
   });
 });
