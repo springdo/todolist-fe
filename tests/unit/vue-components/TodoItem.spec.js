@@ -72,7 +72,6 @@ describe("Important Flag button ", () => {
     // TODO - test goes here!
     expect(wrapper.find(".red-flag").exists()).toBe(false);
   });
-
   it("call makImportant when clicked", () => {
     const wrapper = mount(TodoItem, {
       methods,
