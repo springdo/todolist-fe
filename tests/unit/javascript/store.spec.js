@@ -11,18 +11,6 @@ describe("Initial state tests", () => {
   it("should have loading true by default", () => {
     expect(store.state.loading).toBe(true);
   });
-  /*
-  state: {
-    loading: true,
-    todos: [],
-    newTodo: ""
-  },
-  getters: {
-    newTodo: state => state.newTodo,
-    todos: state => state.todos
-  },
-  
-  */
 });
 
 describe("state getters", () => {

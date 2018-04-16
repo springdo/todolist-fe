@@ -3,16 +3,19 @@ import config from "@/config";
 
 const dummyData = [
   {
+    _id: 0,
     title: "Learn awesome things about Labs 🔬",
     completed: false,
     important: false
   },
   {
+    _id: 1,
     title: "Learn about my friend Jenkins 🎉",
     completed: true,
     important: false
   },
   {
+    _id: 2,
     title: "Drink Coffee ☕💩",
     completed: false,
     important: true
@@ -20,7 +23,7 @@ const dummyData = [
 ];
 export default {
   loadTodos({ commit }) {
-    axios
+    return axios
       .get(config.todoEndpoint)
       .then(r => r.data)
       .then(todos => {
@@ -43,10 +46,10 @@ export default {
     // debugger
     const todo = {
       title: state.newTodo,
-      completed: false,
-      important: false
+      completed: false
     };
-    axios
+    // console.info("TESTINT BLAH BLAH ", todo);
+    return axios
       .post(config.todoEndpoint, todo)
       .then(mongoTodo => {
         commit("ADD_TODO", mongoTodo.data);
@@ -91,17 +94,19 @@ export default {
     }
     //  2 return array of promises and resolve all
   },
-  updateTodo({ commit, state }, {id, important}) {
+  /* eslint: ignore */
+  updateTodo({ commit, state }, { id, important }) {
     let i = state.todos.findIndex(todo => todo._id === id);
-    axios
-      .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
-      .then(data => {
-        console.info("INFO - item " + id + " updated", data);
-      });
     if (important) {
       commit("MARK_TODO_IMPORTANT", i);
     } else {
       commit("MARK_TODO_COMPLETED", i);
     }
+    // Fire and forget style backend update ;)
+    return axios
+      .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
+      .then(data => {
+        console.log("INFO - item " + id + " updated");
+      });
   }
 };
