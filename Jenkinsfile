@@ -34,13 +34,15 @@ pipeline {
                     label "master"
                 }
             }
-            when { branch 'master' }
+            when {
+              expression { GIT_BRANCH ==~ /(.*master)/ }
+            }
             steps {
                 script {
                     // Arbitrary Groovy Script executions can do in script tags
                     env.PROJECT_NAMESPACE = "<YOUR_NAME>-test"
                     env.NODE_ENV = "test"
-                    env.E2E_TEST_ROUTE = "oc get route/${APP_NAME} --template='{{.spec.host}}' -n ${PROJECT_NAMESPACE}".execute().text
+                    env.E2E_TEST_ROUTE = "oc get route/${APP_NAME} --template='{{.spec.host}}' -n ${PROJECT_NAMESPACE}".execute().text.minus("'").minus("'")
                 }
             }
         }
@@ -50,13 +52,15 @@ pipeline {
                     label "master"
                 }
             }
-            when { branch 'develop' }
+            when {
+              expression { GIT_BRANCH ==~ /(.*develop)/ }
+            }
             steps {
                 script {
                     // Arbitrary Groovy Script executions can do in script tags
                     env.PROJECT_NAMESPACE = "<YOUR_NAME>-dev"
                     env.NODE_ENV = "dev"
-                    env.E2E_TEST_ROUTE = "oc get route/${APP_NAME} --template='{{.spec.host}}' -n ${PROJECT_NAMESPACE}".execute().text
+                    env.E2E_TEST_ROUTE = "oc get route/${APP_NAME} --template='{{.spec.host}}' -n ${PROJECT_NAMESPACE}".execute().text.minus("'").minus("'")
                 }
             }
         }
@@ -73,17 +77,18 @@ pipeline {
                 sh 'printenv'
 
                 echo '### Install deps ###'
-                sh 'scl enable rh-nodejs8 \'npm install\''
+                sh 'npm install'
 
                 echo '### Running tests ###'
-                sh 'scl enable rh-nodejs8 \'npm run test\''
+                sh 'npm run test'
 
                 echo '### Running build ###'
-                sh 'scl enable rh-nodejs8 \'npm run build:ci:dev\''
+                sh 'npm run build:ci:${NODE_ENV}'
 
                 echo '### Packaging App for Nexus ###'
-                sh 'scl enable rh-nodejs8 \'npm run package\''
-                sh 'scl enable rh-nodejs8 \'npm run publish\''
+                sh 'npm run package'
+                sh 'npm run publish'
+                stash 'source'
             }
             // Post can be used both on individual stages and for the entire build.
             post {
@@ -114,7 +119,7 @@ pipeline {
                 }
             }
             when {
-                expression { BRANCH_NAME ==~ /(master|develop)/ }
+                expression { GIT_BRANCH ==~ /(.*master|.*develop)/ }
             }
             steps {
                 echo '### Get Binary from Nexus ###'
@@ -144,7 +149,7 @@ pipeline {
                 }
             }
             when {
-                expression { BRANCH_NAME ==~ /(master|develop)/ }
+                expression { GIT_BRANCH ==~ /(.*master|.*develop)/ }
             }
             steps {
                 echo '### tag image for namespace ###'
@@ -154,7 +159,6 @@ pipeline {
                     '''
                 echo '### set env vars and image for deployment ###'
                 sh '''
-                    oc set env dc ${APP_NAME} NODE_ENV=${NODE_ENV}
                     oc set image dc/${APP_NAME} ${APP_NAME}=docker-registry.default.svc:5000/${PROJECT_NAMESPACE}/${APP_NAME}:${JENKINS_TAG}
                     oc rollout latest dc/${APP_NAME}
                 '''
@@ -166,6 +170,30 @@ pipeline {
                     verifyReplicaCount: 'true', 
                     waitTime: '',
                     waitUnit: 'sec'
+            }
+        }
+        stage("e2e test") {
+            agent {
+                node {
+                    label "jenkins-slave-npm"
+                }
+            }
+            when {
+                expression { GIT_BRANCH ==~ /(.*master|.*develop)/ }
+            }
+            steps {
+              unstash 'source'
+
+              echo '### Install deps ###'
+              sh 'npm install'
+
+              echo '### Running end to end tests ###'
+              sh 'npm run e2e:ci'
+            }
+            post {
+                always {
+                    junit 'reports/e2e/specs/*.xml'
+                }
             }
         }
     }
