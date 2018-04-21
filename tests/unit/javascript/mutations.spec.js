@@ -91,12 +91,10 @@ describe("Mutation tests", () => {
   it("it should MARK_TODO_IMPORTANT as false", () => {
     state.todos = importantTodos;
     // TODO - test goes here!
-
   });
 
   it("it should MARK_TODO_IMPORTANT as true", () => {
     state.todos = importantTodos;
     // TODO - test goes here!
-    
   });
 });

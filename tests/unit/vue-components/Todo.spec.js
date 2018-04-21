@@ -18,5 +18,4 @@ describe("Todo.vue", () => {
     expect(wrapper.find(XofYItems)).toBeTruthy();
   });
   // NEW TEST GOES HERE
-  
 });

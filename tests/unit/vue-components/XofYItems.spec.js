@@ -18,9 +18,9 @@ describe("XofYItems.vue", () => {
       important: false
     }
   ];
-//   const methods = {
-//     sumDoneTodoItems: jest.fn()
-//   };
+  //   const methods = {
+  //     sumDoneTodoItems: jest.fn()
+  //   };
   const actions = {
     loadTodos: jest.fn(),
     clearTodos: jest.fn()
@@ -56,7 +56,7 @@ describe("XofYItems.vue", () => {
       }
     ];
 
-    expect(mockedTodos.length).toEqual(3)
+    expect(mockedTodos.length).toEqual(3);
     // Replace with testing the sumDoneTodoItems function and check it it's called
     // expect(sumDoneTodoItems).toHaveBeenCalled()
   });

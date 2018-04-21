@@ -77,7 +77,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.2); /* fallback for old browsers */
+    background: rgba(0, 0, 0, 0.2); /* fallback for old browsers */
     // border-radius: 6px 6px 0 0;
   }
   time {

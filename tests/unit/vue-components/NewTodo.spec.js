@@ -1,42 +1,42 @@
 import { shallow, createLocalVue, mount } from "@vue/test-utils";
-import Vuex from 'vuex';
+import Vuex from "vuex";
 import NewTodo from "@/components/NewTodo.vue";
 // import { expect } from 'chai'
 
 import * as all from "../setup.js";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(Vuex)
+localVue.use(Vuex);
 
 describe("NewTodo.vue", () => {
   let methods;
   let store;
 
   beforeEach(() => {
-    methods = {
+    (methods = {
       newTodoAdded: jest.fn()
-    },
-    store = new Vuex.Store({
-      state: {},
-      methods
-    })
+    }),
+      (store = new Vuex.Store({
+        state: {},
+        methods
+      }));
   });
 
   it("calls newTodoAdded() when keyup.enter hit.", () => {
     // time to try and test some vuex stuff and see if the methods are called when expected.
-    const wrapper = shallow(NewTodo, { methods , localVue})
+    const wrapper = shallow(NewTodo, { methods, localVue });
     const input = wrapper.find(".md-input");
-    input.trigger('keyup.enter')
-    expect(methods.newTodoAdded).toHaveBeenCalled()
+    input.trigger("keyup.enter");
+    expect(methods.newTodoAdded).toHaveBeenCalled();
   });
 
   it("does not call newTodoAdded() when keyup.space hit.", () => {
     // time to try and test some vuex stuff and see if the methods are called when expected.
-    const wrapper = shallow(NewTodo, { methods , localVue})
+    const wrapper = shallow(NewTodo, { methods, localVue });
     const input = wrapper.find(".md-input");
-    input.trigger('keyup.space')
-    expect(methods.newTodoAdded).not.toHaveBeenCalled()
+    input.trigger("keyup.space");
+    expect(methods.newTodoAdded).not.toHaveBeenCalled();
   });
 
   it("renders props.placeholderMsg when passed", () => {

@@ -10,9 +10,7 @@
 export default {
   name: "ComponentView",
   data() {
-    return {
-
-    }
+    return {};
   }
 };
 </script>

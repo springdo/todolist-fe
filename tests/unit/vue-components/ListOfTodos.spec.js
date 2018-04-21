@@ -20,28 +20,28 @@ describe("ListOfTodos.vue", () => {
   ];
   const actions = {
     loadTodos: jest.fn()
-  }
+  };
   const getters = {
     todos: jest.fn()
-  }
+  };
   beforeEach(() => {
-    
     store = new Vuex.Store({
       state: {},
       propsData: { todos },
-      actions, getters
+      actions,
+      getters
     });
   });
 
   it("calls the loadTodos function from actionsjs when created", () => {
     const wrapper = shallow(ListOfTodos, { store, localVue });
     expect(actions.loadTodos).toHaveBeenCalled();
-  })
+  });
 
   it("maps getters with todos when computed", () => {
     const wrapper = shallow(ListOfTodos, { store, localVue });
     expect(getters.todos).toHaveBeenCalled();
-  })
+  });
 
   it("has the expected html structure", () => {
     const wrapper = shallow(ListOfTodos, { store, localVue });

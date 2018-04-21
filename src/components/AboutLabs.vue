@@ -35,19 +35,18 @@ export default {
         },
         {
           name: "Inside a Residency Blog",
-          url: "https://developers.redhat.com/blog/2018/01/26/part-1-inside-open-innovation-labs-residency/"
+          url:
+            "https://developers.redhat.com/blog/2018/01/26/part-1-inside-open-innovation-labs-residency/"
         }
       ],
       social: [
         {
           name: "YouTube",
-          url:
-            "https://www.youtube.com/watch?v=RxOKoqpDuIA"
+          url: "https://www.youtube.com/watch?v=RxOKoqpDuIA"
         },
         {
           name: "Twitter",
-          url:
-            "https://twitter.com/redhatlabs?lang=en"
+          url: "https://twitter.com/redhatlabs?lang=en"
         }
       ]
     };

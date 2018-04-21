@@ -10,7 +10,6 @@
 </template>
 
 <style lang="scss">
-
 @import "scss/custom.scss";
 
 #app {

@@ -126,10 +126,12 @@ describe("updateTodo", () => {
   it("should call MARK_TODO_IMPORTANT", done => {
     const commit = sinon.spy();
     state.todos = todos;
-    actions.updateTodo({ commit, state }, { id: 1 , important: true }).then(() => {
-      // TODO - test goes here!
-      
-      done();
-    });
+    actions
+      .updateTodo({ commit, state }, { id: 1, important: true })
+      .then(() => {
+        // TODO - test goes here!
+
+        done();
+      });
   });
 });

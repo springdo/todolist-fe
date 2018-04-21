@@ -26,7 +26,7 @@ import Header from "@/components/Header.vue";
 import NewTodo from "@/components/NewTodo.vue";
 import ListOfTodos from "@/components/ListOfTodos.vue";
 import XofYItems from "@/components/XofYItems.vue";
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
   name: "Todo",
@@ -37,12 +37,8 @@ export default {
     XofYItems
   },
   methods: {
-    ...mapMutations([
-      'editTodo',
-      'toggleTodo',
-      'deleteTodo'
-    ]),
-  },
+    ...mapMutations(["editTodo", "toggleTodo", "deleteTodo"])
+  }
 };
 </script>
 
