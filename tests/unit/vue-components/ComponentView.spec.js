@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { shallow } from "@vue/test-utils";
 import ComponentView from "@/views/ComponentView.vue";
 import * as all from "../setup.js";

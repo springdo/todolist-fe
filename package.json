@@ -9,6 +9,7 @@
     "e2e": "vue-cli-service e2e",
     "e2e:ci": "vue-cli-service e2e --env jenkins --url http://${E2E_TEST_ROUTE}",
     "lint": "vue-cli-service lint",
+    "lint:ci": "vue-cli-service lint --format checkstyle  > eslint-report.xml",
     "clean": "rm -rf reports dist package-contents*",
     "build:ci": "npm run build && mkdir -p package-contents && cp -vr dist Dockerfile package-contents",
     "build:ci:dev": "cp src/config/dev.js src/config/index.js && npm run build && mkdir -p package-contents && cp -vr dist Dockerfile package-contents",

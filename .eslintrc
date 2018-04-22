@@ -8,5 +8,5 @@
   "ecmaFeatures": {
     "modules": true
   },
-  "rules": { "no-unused-vars": 0 }
+  // "rules": { "no-unused-vars": 0 }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { shallow, mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import TodoItem from "@/components/TodoItem.vue";

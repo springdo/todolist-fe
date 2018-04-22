@@ -105,8 +105,8 @@ export default {
     // Fire and forget style backend update ;)
     return axios
       .put(config.todoEndpoint + "/" + state.todos[i]._id, state.todos[i])
-      .then(data => {
-        console.log("INFO - item " + id + " updated");
+      .then(() => {
+        console.info("INFO - item " + id + " updated");
       });
   }
 };

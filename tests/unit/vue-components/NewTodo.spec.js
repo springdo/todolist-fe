@@ -1,26 +1,25 @@
-import { shallow, createLocalVue, mount } from "@vue/test-utils";
+/* eslint-disable */
+import { shallow, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import NewTodo from "@/components/NewTodo.vue";
-// import { expect } from 'chai'
 
 import * as all from "../setup.js";
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
+let methods;
+let store;
 
 describe("NewTodo.vue", () => {
-  let methods;
-  let store;
-
   beforeEach(() => {
-    (methods = {
+    methods = {
       newTodoAdded: jest.fn()
-    }),
-      (store = new Vuex.Store({
-        state: {},
-        methods
-      }));
+    };
+    store = new Vuex.Store({
+      state: {},
+      methods
+    });
   });
 
   it("calls newTodoAdded() when keyup.enter hit.", () => {
@@ -56,16 +55,4 @@ describe("NewTodo.vue", () => {
     const wrapper = shallow(NewTodo);
     expect(wrapper.element).toMatchSnapshot();
   });
-
-  // it("has the expected html structure", () => {
-  //   const wrapper = mount(NewTodo);
-  //   expect(wrapper.element).toMatchSnapshot();
-  // });
-
-  // it("renders newTodo as test string ", () => {
-  //   const wrapper = shallow(NewTodo, {
-  //     propsData: { newTodo: "test string" }
-  //   });
-  //   expect(wrapper.vm.newTodo).toMatch("test string");
-  // });
 });

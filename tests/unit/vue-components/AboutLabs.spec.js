@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { shallow } from "@vue/test-utils";
 import AboutLabs from "@/components/AboutLabs.vue";
 import * as all from "../setup.js";

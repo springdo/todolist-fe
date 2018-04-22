@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { shallow } from "@vue/test-utils";
 import Todo from "@/views/Todo.vue";
 import Header from "@/components/Header.vue";

@@ -1,5 +1,4 @@
 import store from "@/store";
-import * as all from "../setup.js";
 
 describe("Initial state tests", () => {
   it("should have no todos by default", () => {

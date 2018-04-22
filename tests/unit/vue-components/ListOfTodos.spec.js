@@ -1,7 +1,7 @@
+/* eslint-disable */
 import { shallow, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import ListOfTodos from "@/components/ListOfTodos.vue";
-// import { expect } from 'chai'
 
 import * as all from "../setup.js";
 
@@ -35,11 +35,13 @@ describe("ListOfTodos.vue", () => {
 
   it("calls the loadTodos function from actionsjs when created", () => {
     const wrapper = shallow(ListOfTodos, { store, localVue });
+    expect(wrapper).toBeTruthy();
     expect(actions.loadTodos).toHaveBeenCalled();
   });
 
   it("maps getters with todos when computed", () => {
     const wrapper = shallow(ListOfTodos, { store, localVue });
+    expect(wrapper).toBeTruthy();
     expect(getters.todos).toHaveBeenCalled();
   });
 

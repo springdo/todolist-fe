@@ -1,5 +1,4 @@
 import actions from "@/store/actions";
-import * as all from "../setup.js";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import sinon from "sinon";
