@@ -4,7 +4,7 @@
     <md-list-item
       @click="markCompleted()"
       >
-      <checkbox v-model="todoItem.completed" class="checkbox-completed"/> 
+      <checkbox v-model="todoItem.completed" class="checkbox-completed"/>
 
         <span class="md-list-item-text" :class="{'strike-through': todoItem.completed}">{{ todoItem.title }}</span>
       </md-list-item>
@@ -18,6 +18,7 @@ import Vue from "vue";
 import { Checkbox, Radio } from "vue-checkbox-radio";
 Vue.component("checkbox", Checkbox);
 Vue.component("radio", Radio);
+let biscuits;
 
 export default {
   name: "TodoItem",
