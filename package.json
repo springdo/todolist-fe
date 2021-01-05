@@ -20,7 +20,7 @@
     "publish:get": "curl -vvv http://admin:admin123@${NEXUS_SERVICE_HOST}:${NEXUS_SERVICE_PORT}/repository/zip/com/redhat/todolist/${BUILD_TAG}/package-contents.zip -o package-contents.zip"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.13",
     "vue-checkbox-radio": "^0.6.0",
